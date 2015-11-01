@@ -68,8 +68,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CambiarActuacion.cs" />
+    <Compile Include="Assets\Modelo\Actuacion.cs" />
+    <Compile Include="Assets\Scripts\CambiarTextoActuacion.cs" />
+    <Compile Include="Assets\Scripts\CerrarCirco.cs" />
     <Compile Include="Assets\Scripts\LevantarTelon.cs" />
+    <Compile Include="Assets\Scripts\MainMenu_MoverCamara.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

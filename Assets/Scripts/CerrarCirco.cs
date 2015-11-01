@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevantarTelon : MonoBehaviour {
+public class CerrarCirco : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +13,8 @@ public class LevantarTelon : MonoBehaviour {
 	
 	}
 
-    public void CargarActuacion()
+    public void TerminarFuncion()
     {
-        Application.LoadLevel(MainMenu_MoverCamara.Actual + 1);
+        Application.Quit();
     }
 }
