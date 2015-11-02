@@ -10,7 +10,10 @@ public class LevantarTelon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (Input.GetButton("Fire3") || Input.GetKey(KeyCode.Space))
+        {
+            CargarActuacion();
+        }
 	}
 
     public void CargarActuacion()

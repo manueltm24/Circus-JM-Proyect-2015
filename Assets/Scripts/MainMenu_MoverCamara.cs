@@ -18,6 +18,7 @@ public class MainMenu_MoverCamara : MonoBehaviour {
     {
         MoverCamara();
 	}
+
     /// <summary>
     /// Mueve la camara en forma de "loop infinito", cuando llega al final de un lado va al comienzo del otro
     /// </summary>

@@ -9,9 +9,13 @@ public class CerrarCirco : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void Update ()
+    {
+        if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.Escape))
+        {
+            TerminarFuncion();
+        }
+    }
 
     public void TerminarFuncion()
     {

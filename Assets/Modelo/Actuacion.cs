@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization;
 
 public class Actuacion : MonoBehaviour {
+
     #region "Atributos"
 
     public string Nombre { get; set; }
