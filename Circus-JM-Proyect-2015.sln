@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Circus-JM-Proyect-2015.CSharp", "Circus-JM-Proyect-2015.CSharp.csproj", "{C4625136-D9F6-11E6-9730-CC3AD655D664}"
 EndProject
 Global
