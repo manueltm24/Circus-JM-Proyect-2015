@@ -21,25 +21,23 @@ public class Desplazamiento : Personaje
 
     public void OnTriggerEnter2D(Collider2D colisionado)
     {
-        if (colisionado.name.Contains("Rueda"))
+		if (colisionado.name.Contains("Suelo"))
         {
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
         }
-		if (colisionado.name.Contains("Suelo"))
-		{
-			this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-			TiempoUltimaActualizacion = DateTime.Now;
-			Saltando = false;
-		}
+
+        if (colisionado.name.Contains("aro"))
+        {
+            Debug.Log("A");
+        }
     }
+
 
     public void OnTriggerExit2D(Collider2D colisionado)
     {
-        if (colisionado.name.Contains("Rueda"))
+        if (colisionado.name.Contains("Suelo"))
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-		if (colisionado.name.Contains("Suelo"))
-			this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
     }
 }
