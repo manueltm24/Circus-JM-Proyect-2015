@@ -27,11 +27,19 @@ public class Desplazamiento : Personaje
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
         }
+		if (colisionado.name.Contains("Suelo"))
+		{
+			this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+			TiempoUltimaActualizacion = DateTime.Now;
+			Saltando = false;
+		}
     }
 
     public void OnTriggerExit2D(Collider2D colisionado)
     {
         if (colisionado.name.Contains("Rueda"))
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+		if (colisionado.name.Contains("Suelo"))
+			this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
     }
 }

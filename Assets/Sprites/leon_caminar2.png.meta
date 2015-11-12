@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: 2e934ec485461ad439766f4f2ae093c6
-timeCreated: 1447259631
+guid: 25f61f53621fc37498d9a81f84baa9b5
+timeCreated: 1447339292
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: leon-caminar2_0
-    21300002: leon-caminar2_1
-    21300004: leon-caminar2_2
-    21300006: leon-caminar2_3
+    21300000: leon_caminar2_0
+    21300002: leon_caminar2_1
+    21300004: leon_caminar2_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,7 +53,17 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: leon-caminar2_1
+    - name: leon_caminar2_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: leon_caminar2_1
       rect:
         serializedVersion: 2
         x: 42
@@ -64,7 +73,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: leon-caminar2_2
+    - name: leon_caminar2_2
       rect:
         serializedVersion: 2
         x: 76
