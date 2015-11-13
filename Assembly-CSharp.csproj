@@ -52,9 +52,11 @@
      <Compile Include="Assets\Scripts\Desplazamiento.cs" />
      <Compile Include="Assets\Scripts\DesplazarRueda.cs" />
      <Compile Include="Assets\Scripts\GenerarMapa.cs" />
+     <Compile Include="Assets\Scripts\GenerarMapaActuacionArosFuego.cs" />
      <Compile Include="Assets\Scripts\LevantarTelon.cs" />
      <Compile Include="Assets\Scripts\MainMenu_MoverCamara.cs" />
      <None Include="Assets\mapa-ruedas.txt" />
+     <None Include="Assets\mapa-arosfuego.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

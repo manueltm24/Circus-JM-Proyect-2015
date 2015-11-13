@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4d8d3234d531fbf4db32928b72d0b8e7
+timeCreated: 1447414963
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - PF_ArosFuegoGrande: {fileID: 497750, guid: 8d8453ae87f635946844356646c9cbcb, type: 2}
+  - PF_LeonPersonaje: {fileID: 491202, guid: f03cd5dd990776346a81cc56cf463d60, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
