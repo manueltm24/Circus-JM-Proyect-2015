@@ -51,11 +51,23 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
@@ -81,10 +93,12 @@
     <Compile Include="Assets\Scripts\Desplazamiento.cs" />
     <Compile Include="Assets\Scripts\DesplazarRueda.cs" />
     <Compile Include="Assets\Scripts\GenerarMapa.cs" />
+    <Compile Include="Assets\Scripts\GenerarMapaActuacionArosFuego.cs" />
     <Compile Include="Assets\Scripts\LevantarTelon.cs" />
     <Compile Include="Assets\Scripts\MainMenu_MoverCamara.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\mapa-arosfuego.txt" />
     <None Include="Assets\mapa-ruedas.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
