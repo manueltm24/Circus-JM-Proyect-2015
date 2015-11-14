@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DesplazarRueda : Personaje {
+public class DesplazarRueda : Personaje
+{
     public bool PersonajeEncima { get; set; }
-                                       // Use this for initialization
+
     void Start ()
     {
         Velocidad = new Vector3(4f, 0);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update ()
+    {
         if(PersonajeEncima)
             DesplazarseX();
     }

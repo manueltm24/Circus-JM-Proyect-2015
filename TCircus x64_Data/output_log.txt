@@ -15,13 +15,7 @@ Loading C:\Users\Jean\Documents\GitHub\Circus-JM-Proyect-2015\TCircus x64_Data\M
 Platform assembly: C:\Users\Jean\Documents\GitHub\Circus-JM-Proyect-2015\TCircus x64_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Jean\Documents\GitHub\Circus-JM-Proyect-2015\TCircus x64_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Jean\Documents\GitHub\Circus-JM-Proyect-2015\TCircus x64_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.259 seconds
+- Completed reload, in  0.411 seconds
 desktop: 1366x768 40Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-<RI> Initialized touch support.
-Platform assembly: C:\Users\Jean\Documents\GitHub\Circus-JM-Proyect-2015\TCircus x64_Data\Managed\System.dll (this message is harmless)
-Platform assembly: C:\Users\Jean\Documents\GitHub\Circus-JM-Proyect-2015\TCircus x64_Data\Managed\System.Runtime.Serialization.dll (this message is harmless)
-Platform assembly: C:\Users\Jean\Documents\GitHub\Circus-JM-Proyect-2015\TCircus x64_Data\Managed\System.Xml.dll (this message is harmless)
-Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1d70 -> priority: 1 

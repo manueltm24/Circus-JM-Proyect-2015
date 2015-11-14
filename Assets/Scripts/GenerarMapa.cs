@@ -1,38 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 public class GenerarMapa : MonoBehaviour {
 
-    string archivo = "mapa-ruedas.txt";
-    public Transform PF_Rueda;
-    public Transform PF_Personaje;
+    public string Archivo;
+    public List<Transform> PFs;
 
     public float Contador { get; set; }
 
     void Start()
     {
-        var sr = new StreamReader(Application.dataPath + "/" + archivo);
+        var sr = new StreamReader(Application.dataPath + "/" + Archivo);
         while (!sr.EndOfStream)
         {
             string contenido = sr.ReadLine();
-            var contenido2 = contenido.Split(" "[0]);
-            for (int i = 0; i < contenido2.Length; i++)
+
+            for (int i = 0; i < contenido.Length; i++)
             {
-                switch (contenido2[i])
+                switch (contenido[i])
                 {
 
-                    case "$":
-                        Instanciador(i, PF_Rueda, contenido2.Length);
+                    case '$':
+                        Instanciador(i, PFs[0]);
                         break;
 
-                    case "P":
-                        Instanciador(i, PF_Personaje, contenido2.Length);
+                    case 'P':
+                        Instanciador(i, PFs.First(P => P.name.Contains("Personaje")));
                         break;
                 }
             }
 
-            Contador += (float)PF_Rueda.transform.localScale.y * 1 / -4f;
+            Contador += (float)PFs[0].transform.localScale.y * 1 / -4.37f;
         }
 
         sr.Close();
@@ -40,7 +41,12 @@ public class GenerarMapa : MonoBehaviour {
 
     }
 
-    public void Instanciador(int i, Transform aInstanciar, int limite)
+    /// <summary>
+    /// Instancia objetos prefabricados tomando en cuenta su posición en la línea para colocarlos en cuanto X
+    /// </summary>
+    /// <param name="i"></param>
+    /// <param name="aInstanciar"></param>
+    public void Instanciador(int i, Transform aInstanciar)
     {
         Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
     }
