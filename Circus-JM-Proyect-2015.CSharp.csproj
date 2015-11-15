@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\GenerarMapa.cs" />
     <Compile Include="Assets\Scripts\LevantarTelon.cs" />
     <Compile Include="Assets\Scripts\MainMenu_MoverCamara.cs" />
+    <Compile Include="Assets\Scripts\MoverCamara.cs" />
     <Compile Include="Assets\Scripts\MoverFondo.cs" />
   </ItemGroup>
   <ItemGroup>

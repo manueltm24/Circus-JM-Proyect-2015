@@ -27,15 +27,22 @@ public class Personaje : MonoBehaviour
 
     public DateTime TiempoUltimaActualizacion { get; set; }
 
+    public static float TraslacionX { get; set; }
+
     #endregion
 
     #region "Comportamientos"
 
     public void DesplazarseX()
     {
-        float translationX = Input.GetAxis("Horizontal") * Velocidad.x;
-        translationX *= Time.deltaTime;
-        transform.Translate(translationX, 0, 0);
+        TraslacionX = Input.GetAxis("Horizontal") * Velocidad.x;
+        if (TraslacionX > 0)
+            DireccionActual = E_Direcciones.Este;
+        if (TraslacionX < 0)
+            DireccionActual = E_Direcciones.Oeste;
+
+        TraslacionX *= Time.deltaTime;
+        transform.Translate(TraslacionX, 0, 0);
     }
 
     public void EmpezarSalto()
