@@ -26,6 +26,8 @@ public class MainMenu_MoverCamara : MonoBehaviour {
     {
         int ultimo = 3;
         float tecla = Input.GetAxis("Horizontal");
+
+        //Estandariza los valores de las teclas a 0 y 1, porqué originalmente esto es float, y no funciona bien con (int)
         if (tecla < 0)
             tecla = -1;
         if (tecla > 0)

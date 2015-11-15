@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Describe las situaciones en la que la aplicación se cierra
+/// </summary>
 public class CerrarCirco : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+    
 	void Update ()
     {
         if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.Escape))
@@ -17,6 +14,9 @@ public class CerrarCirco : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cierra la aplicación
+    /// </summary>
     public void TerminarFuncion()
     {
         Application.Quit();

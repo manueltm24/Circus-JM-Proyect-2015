@@ -4,6 +4,9 @@ using UnityEngine.UI;
 using System.Runtime.Serialization;
 using System.IO;
 
+/// <summary>
+/// Muestra en el menú principal la información de la actuación seleccionada
+/// </summary>
 public class CambiarTextoActuacion : MonoBehaviour {
 
     public Text TextoNombre { get; set; }
@@ -26,6 +29,7 @@ public class CambiarTextoActuacion : MonoBehaviour {
 
 	void Update ()
     {
+        //Si los textos no son los correspondientes, se cambian
         if (TextoActual != MainMenu_MoverCamara.Actual)
         {
             TextoActual = MainMenu_MoverCamara.Actual;

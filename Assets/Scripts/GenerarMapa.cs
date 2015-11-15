@@ -4,13 +4,18 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// Genera el mapa de la actuación a partir de un archivo de texto
+/// </summary>
 public class GenerarMapa : MonoBehaviour {
 
     public string Archivo;
     public List<Transform> PFs;
-
     public float Contador { get; set; }
 
+    /// <summary>
+    /// Lee el archivo para generar el mapa
+    /// </summary>
     void Start()
     {
         var sr = new StreamReader(Application.dataPath + "/" + Archivo);
@@ -18,11 +23,12 @@ public class GenerarMapa : MonoBehaviour {
         {
             string contenido = sr.ReadLine();
 
+            //Lee los distintos caracteres de la línea
             for (int i = 0; i < contenido.Length; i++)
             {
+                //Dependiendo del caracter leído instancia uno u otro objeto prefabricado
                 switch (contenido[i])
                 {
-
                     case '$':
                         Instanciador(i, PFs[0]);
                         break;
@@ -34,6 +40,10 @@ public class GenerarMapa : MonoBehaviour {
                     case 'P':
                         Instanciador(i, PFs.First(P => P.name.Contains("Personaje")));
                         break;
+
+                    case 'F':
+                        Instanciador(i, PFs.First(F => F.name.Contains("Final")));
+                        break;
                 }
             }
 
@@ -41,12 +51,10 @@ public class GenerarMapa : MonoBehaviour {
         }
 
         sr.Close();
-
-
     }
 
     /// <summary>
-    /// Instancia objetos prefabricados tomando en cuenta su posición en la línea para colocarlos en cuanto X
+    /// Instancia objetos prefabricados tomando en cuenta su posición en la línea del archivo para colocarlos en cuanto X
     /// </summary>
     /// <param name="i"></param>
     /// <param name="aInstanciar"></param>

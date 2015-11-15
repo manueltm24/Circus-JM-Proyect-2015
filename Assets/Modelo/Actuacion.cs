@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 
+/// <summary>
+/// Describe una actuación cirquense
+/// </summary>
 public class Actuacion : MonoBehaviour {
 
     #region "Atributos"
@@ -34,6 +37,11 @@ public class Actuacion : MonoBehaviour {
 
     #region "Comportamientos"
 
+    /// <summary>
+    /// Obtiene la puntuación maxima, descrita en el archivo: \nombreArchivo\
+    /// </summary>
+    /// <param name="nombreArchivo">Nombre del archivo donde se encuentra la puntuación maxima de esta actuación</param>
+    /// <returns>Puntuación maxima obtenida en la actuación</returns>
     public int ObtenerPuntacion(string nombreArchivo)
     {
         int puntuacionMaxima;
@@ -56,6 +64,11 @@ public class Actuacion : MonoBehaviour {
         return puntuacionMaxima;
     }
 
+    /// <summary>
+    /// Obtiene el tiempo record, descrito en el archivo: \nombreArchivo\
+    /// </summary>
+    /// <param name="nombreArchivo">Nombre del archivo donde se encuentra el tiempo record de esta actuación</param>
+    /// <returns>Tiempo record obtenido en la actuación</returns>
     public float ObtenerTiempoRecord(string nombreArchivo)
     {
         float tiempoRecord;
@@ -82,6 +95,9 @@ public class Actuacion : MonoBehaviour {
 
     #region "Datos estaticos"
 
+    /// <summary>
+    /// Genera una pseudo-base de datos con las actuaciones actualmente existentes
+    /// </summary>
     private static List<Actuacion> listaActuaciones = null;
     public static List<Actuacion> ListaActuaciones
     {
@@ -100,7 +116,6 @@ public class Actuacion : MonoBehaviour {
         }
 
         set { listaActuaciones = value; }
-
     }
 
     #endregion

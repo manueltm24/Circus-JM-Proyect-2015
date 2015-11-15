@@ -2,6 +2,9 @@
 using System.Collections;
 using System;
 
+/// <summary>
+/// Describe el desplazamiento de las ruedas y las interrupciones que pueden encontrar en su trayecto
+/// </summary>
 public class DesplazarRueda : Personaje
 {
     public bool PersonajeEncima { get; set; }
@@ -23,6 +26,10 @@ public class DesplazarRueda : Personaje
             DesplazamientoRueda();
     }
 
+    /// <summary>
+    /// Maneja las colisiones de las ruedas con respecto a \colisionado\
+    /// </summary>
+    /// <param name="colisionado">Objeto con el que se colisionó</param>
     public void OnTriggerEnter2D(Collider2D colisionado)
     {
         if (colisionado.name.Contains("Personaje"))
@@ -44,6 +51,10 @@ public class DesplazarRueda : Personaje
         }
     }
 
+    /// <summary>
+    /// Maneja cuando la rueda deja de colisionar con \colisionado\
+    /// </summary>
+    /// <param name="colisionado">Objeto con el que se colisionó</param>
     public void OnTriggerExit2D(Collider2D colisionado)
     {
         if (colisionado.name.Contains("Personaje"))
@@ -56,6 +67,9 @@ public class DesplazarRueda : Personaje
         }
     }
 
+    /// <summary>
+    /// Desplaza automaticamente la rueda hacia la dirección dada
+    /// </summary>
     public void DesplazamientoRueda()
     {
         while (DireccionActual == E_Direcciones.Este && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.12))

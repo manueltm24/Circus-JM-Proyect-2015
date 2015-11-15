@@ -2,8 +2,11 @@
 using System.Collections;
 using System;
 
+/// <summary>
+/// Describe al personaje principal del juego
+/// </summary>
 public class Personaje : MonoBehaviour
-{
+{    
     #region "Enums"
 
     public enum E_Direcciones
@@ -29,10 +32,17 @@ public class Personaje : MonoBehaviour
 
     public static float TraslacionX { get; set; }
 
+    public static int Vidas = 5;
+
+    public float PosicionInicialY { get; set; }
+
     #endregion
 
     #region "Comportamientos"
 
+    /// <summary>
+    /// Desplaza al personaje en X con respecto a la tecla presionada
+    /// </summary>
     public void DesplazarseX()
     {
         TraslacionX = Input.GetAxis("Horizontal") * Velocidad.x;
@@ -45,12 +55,18 @@ public class Personaje : MonoBehaviour
         transform.Translate(TraslacionX, 0, 0);
     }
 
+    /// <summary>
+    /// Lee la tecla para saltar, impide saltar si ya se esta saltando
+    /// </summary>
     public void EmpezarSalto()
     {
         if ((Input.GetKey(KeyCode.Space) || Input.GetButton("Jump")) && !Saltando)
             DireccionActual = E_Direcciones.Arriba;
     }
 
+    /// <summary>
+    /// Hace que el personaje salte
+    /// </summary>
     public void Saltar()
     {
         if (DireccionActual == E_Direcciones.Arriba && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.04))
