@@ -10,7 +10,7 @@ public class Desplazamiento : Personaje
 
 	void Awake ()
     {
-        Velocidad = new Vector3(4f, 2.87f);
+        Velocidad = new Vector3(4f, 2f);
         TiempoUltimaActualizacion = DateTime.Now;
         DireccionActual = E_Direcciones.Reposo;
         PosicionInicialY = transform.localPosition.y;
@@ -42,19 +42,12 @@ public class Desplazamiento : Personaje
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
-			Debug.Log(Saltando);
-			this.gameObject.GetComponent<Rigidbody2D>().AddForce (-Vector2.up * 320);
         }
 
         if (colisionado.name.Contains("Aro"))
         {
             Debug.Log("A");
         }
-		if (colisionado.name.Contains("Jarron"))
-		{
-			Destroy(this.gameObject);
-			Application.Quit();
-		}
     }
 
     /// <summary>

@@ -60,21 +60,18 @@ public class Personaje : MonoBehaviour
     /// </summary>
     public void EmpezarSalto()
     {
-        if ((Input.GetKey (KeyCode.Space) || Input.GetButton ("Jump")) && !Saltando) {
-			DireccionActual = E_Direcciones.Arriba;
-			Debug.Log("Saltar");
-		}
+        if ((Input.GetKey(KeyCode.Space) || Input.GetButton("Jump")) && !Saltando)
+            DireccionActual = E_Direcciones.Arriba;
     }
 
     /// <summary>
     /// Hace que el personaje salte
     /// </summary>
     public void Saltar()
-	{
-
-        if (DireccionActual == E_Direcciones.Arriba)
+    {
+        if (DireccionActual == E_Direcciones.Arriba && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.04))
         {
-			this.gameObject.GetComponent<Rigidbody2D>().AddForce (Vector2.up * 320);
+            transform.Translate(0, Velocidad.y, 0);
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0.9f;
             Saltando = true;
             DireccionActual = E_Direcciones.Reposo;
