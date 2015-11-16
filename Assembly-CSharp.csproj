@@ -49,14 +49,16 @@
      <Compile Include="Assets\Modelo\Personaje.cs" />
      <Compile Include="Assets\Scripts\CambiarTextoActuacion.cs" />
      <Compile Include="Assets\Scripts\CerrarCirco.cs" />
+     <Compile Include="Assets\Scripts\ContarVidas.cs" />
      <Compile Include="Assets\Scripts\Desplazamiento.cs" />
      <Compile Include="Assets\Scripts\DesplazarRueda.cs" />
      <Compile Include="Assets\Scripts\GenerarMapa.cs" />
-     <Compile Include="Assets\Scripts\GenerarMapaActuacionArosFuego.cs" />
      <Compile Include="Assets\Scripts\LevantarTelon.cs" />
      <Compile Include="Assets\Scripts\MainMenu_MoverCamara.cs" />
+     <Compile Include="Assets\Scripts\MoverCamara.cs" />
+     <Compile Include="Assets\Scripts\MoverFondo.cs" />
+     <None Include="Assets\mapa-aros.txt" />
      <None Include="Assets\mapa-ruedas.txt" />
-     <None Include="Assets\mapa-arosfuego.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
