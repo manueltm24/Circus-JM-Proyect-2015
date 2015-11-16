@@ -41,7 +41,7 @@ public class Desplazamiento : Personaje
         {
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TiempoUltimaActualizacion = DateTime.Now;
-            Saltando = false;
+			Saltando = false;
         }
 
         if (colisionado.name.Contains("Aro"))

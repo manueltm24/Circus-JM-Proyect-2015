@@ -70,8 +70,9 @@ public class Personaje : MonoBehaviour
     public void Saltar()
     {
         if (DireccionActual == E_Direcciones.Arriba && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.04))
-        {
-            transform.Translate(0, Velocidad.y, 0);
+		{
+			this.gameObject.GetComponent<Rigidbody2D>().velocity += Vector2.up * 6.5f;
+            //transform.Translate(0, Velocidad.y, 0);
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0.9f;
             Saltando = true;
             DireccionActual = E_Direcciones.Reposo;
