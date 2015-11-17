@@ -36,6 +36,9 @@ public class GenerarMapa : MonoBehaviour {
                     case '#':
                         Instanciador(i, PFs[1]);
                         break;
+					case '*':
+						Instanciador(i, PFs[3]);
+						break;
 
                     case 'P':
                         Instanciador(i, PFs.First(P => P.name.Contains("Personaje")));

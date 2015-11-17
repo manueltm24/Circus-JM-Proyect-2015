@@ -44,10 +44,16 @@ public class Desplazamiento : Personaje
 			Saltando = false;
         }
 
-        if (colisionado.name.Contains("Aro"))
-        {
-            Debug.Log("A");
-        }
+		if (colisionado.name.Contains("Aro"))
+		{
+			Destroy(this.gameObject);
+			Application.Quit();
+		}
+		if (colisionado.name.Contains("Jarron"))
+		{
+			Destroy(this.gameObject);
+			Application.Quit();
+		}
     }
 
     /// <summary>
