@@ -29,6 +29,7 @@ public class Desplazamiento : Personaje
         DesplazarseX();
         EmpezarSalto();
         Saltar();
+		CambioVelocidad();
 	}
 
     /// <summary>
@@ -65,4 +66,11 @@ public class Desplazamiento : Personaje
         if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda"))
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
     }
+		public void CambioVelocidad()
+	{
+		if (Input.GetKey(KeyCode.W))
+			Velocidad = new Vector3(6f, 0);
+		else
+			Velocidad = new Vector3(4f, 0);
+	}
 }

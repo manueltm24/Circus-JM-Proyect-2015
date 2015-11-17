@@ -66,13 +66,6 @@ public class DesplazarRueda : Personaje
             PersonajeEncima = false;
         }
     }
-	public void CambioVelocidad()
-	{
-		if (Input.GetKey(KeyCode.W))
-			Velocidad = new Vector3(0.8f, 0);
-		else
-			Velocidad = new Vector3(0.2f, 0);
-	}
 
     /// <summary>
     /// Desplaza automaticamente la rueda hacia la dirección dada
