@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ea3e22e1365af0543a4e7da05825057e
-timeCreated: 1446230188
+timeCreated: 1447810104
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -56,16 +56,6 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: pj-salto2_0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 1
-        width: 17
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: pj-salto2_1
       rect:
         serializedVersion: 2
@@ -74,7 +64,7 @@ TextureImporter:
         width: 17
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: pj-salto2_2
       rect:
@@ -84,7 +74,7 @@ TextureImporter:
         width: 17
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: pj-salto2_3
       rect:
@@ -94,7 +84,7 @@ TextureImporter:
         width: 17
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: pj-salto2_4
       rect:
@@ -104,7 +94,7 @@ TextureImporter:
         width: 17
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: pj-salto2_5
       rect:
@@ -114,7 +104,7 @@ TextureImporter:
         width: 17
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
