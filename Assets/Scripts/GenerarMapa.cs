@@ -29,6 +29,9 @@ public class GenerarMapa : MonoBehaviour {
                 //Dependiendo del caracter leído instancia uno u otro objeto prefabricado
                 switch (contenido[i])
                 {
+					case '_':
+						Instanciador(i, PFs[3]);
+						break;
                     case '$':
                         Instanciador(i, PFs[0]);
                         break;
@@ -37,7 +40,7 @@ public class GenerarMapa : MonoBehaviour {
                         Instanciador(i, PFs[1]);
                         break;
 					case '*':
-						Instanciador(i, PFs[3]);
+						Instanciador(i, PFs[4]);
 						break;
 
                     case 'P':
@@ -51,6 +54,7 @@ public class GenerarMapa : MonoBehaviour {
             }
 
             Contador += (float)PFs[0].transform.localScale.y * 1 / -4.37f;
+
         }
 
         sr.Close();
