@@ -58,7 +58,6 @@
      <Compile Include="Assets\Scripts\MoverCamara.cs" />
      <Compile Include="Assets\Scripts\MoverFondo.cs" />
      <None Include="Assets\mapa-aros.txt" />
-     <None Include="Assets\PruebaGithub.txt" />
      <None Include="Assets\mapa-ruedas.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
