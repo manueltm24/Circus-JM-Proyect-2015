@@ -1,11 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\mapa-ruedas.txt">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GenerarMapa.cs">
     <Files>
-      <File FileName="Assets\Scripts\GenerarMapa.cs" Line="43" Column="28" />
+      <File FileName="Assets\Scripts\Desplazamiento.cs" Line="79" Column="12" />
+      <File FileName="Assets\Scripts\GenerarMapa.cs" Line="60" Column="36" />
+      <File FileName="Assets\Scripts\MoverCamara.cs" Line="1" Column="1" />
+      <File FileName="Assets\mapa-aros.txt" Line="1" Column="1" />
+      <File FileName="Assets\mapa-ruedas.txt" Line="1" Column="1" />
       <File FileName="Assets\Modelo\Personaje.cs" Line="1" Column="1" />
-      <File FileName="Assets\mapa-aros.txt" Line="22" Column="1" />
-      <File FileName="Assets\mapa-ruedas.txt" Line="23" Column="643" />
+      <File FileName="Assets\Scripts\ContarVidas.cs" Line="25" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

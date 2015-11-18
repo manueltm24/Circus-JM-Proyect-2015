@@ -55,7 +55,10 @@ public class GenerarMapa : MonoBehaviour {
                         break;
 
                     case 'F':
-                        Instanciador(i, PFs.First(F => F.name.Contains("Final")));
+						if(Application.loadedLevel==3)
+                        	Instanciador(i, PFs.First(F => F.name.Contains("Final")));
+						if(Application.loadedLevel==1)
+							Instanciador(i, PFs[5]);
                         break;
                 }
             }
