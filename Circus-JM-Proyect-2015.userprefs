@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PruebaGithub.txt">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\mapa-ruedas.txt">
     <Files>
+      <File FileName="Assets\Scripts\GenerarMapa.cs" Line="43" Column="28" />
       <File FileName="Assets\Modelo\Personaje.cs" Line="1" Column="1" />
-      <File FileName="Assets\PruebaGithub.txt" Line="2" Column="1" />
+      <File FileName="Assets\mapa-aros.txt" Line="22" Column="1" />
+      <File FileName="Assets\mapa-ruedas.txt" Line="23" Column="643" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
