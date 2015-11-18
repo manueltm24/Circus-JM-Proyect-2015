@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 /// <summary>
 /// Describe el desplazamiento del personaje principal y las interrupciones que puede encontrar en su trayecto
 /// </summary>
 public class Desplazamiento : Personaje
 {
+	public Transform Ganador;
+	public Transform Muerto1;
+	public int NivelActual;
+
+	public Vector3 PosicionGuardada { get; set;}
 
 	void Awake ()
     {
+
+		NivelActual = Application.loadedLevel;
         Velocidad = new Vector3(4f, 2f);
         TiempoUltimaActualizacion = DateTime.Now;
         DireccionActual = E_Direcciones.Reposo;
@@ -27,10 +38,12 @@ public class Desplazamiento : Personaje
         }
         if (Application.loadedLevel != 4)
             DesplazarseX();
-
+	
         EmpezarSalto();
         Saltar();
 		CambioVelocidad();
+
+	
 	}
 
     /// <summary>
@@ -41,26 +54,56 @@ public class Desplazamiento : Personaje
     {
 		if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
         {
-            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-            TiempoUltimaActualizacion = DateTime.Now;
-			Saltando = false;
+			if(Application.loadedLevel==1){
+	            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+	            TiempoUltimaActualizacion = DateTime.Now;
+				Saltando = false;
+			}
         }
 
+		if ((colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final")))
+		{
+			if(Application.loadedLevel==3)
+			{
+				this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+				TiempoUltimaActualizacion = DateTime.Now;
+				Saltando = false;
+			}
+		}
 		if (colisionado.name.Contains("Aro"))
 		{
+			PosicionGuardada= transform.localPosition;
 			Destroy(this.gameObject);
-			Application.Quit();
+			Instantiate(Muerto1, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
+			Personaje.TraslacionX=0;
+			Vidas--;
+			Application.LoadLevel (NivelActual);
+
 		}
 
 		if (colisionado.name.Contains("Jarron"))
 		{
+			PosicionGuardada= transform.localPosition;
 			Destroy(this.gameObject);
-			Application.Quit();
+			Instantiate(Muerto1, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
+			Personaje.TraslacionX=0;
+			Vidas--;
+			Application.LoadLevel (NivelActual);
+
+		}
+		if (colisionado.name.Contains("Final"))
+		{
+			PosicionGuardada= transform.localPosition;
+			Destroy(this.gameObject);
+			Instantiate(Ganador, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
+			Personaje.TraslacionX=0;
 		}
 
         if (colisionado.name.Contains("Cuerda"))
         {
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+			this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+
         }
 
         if (colisionado.name.Contains("Trampolin"))
