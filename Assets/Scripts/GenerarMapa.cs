@@ -11,6 +11,7 @@ public class GenerarMapa : MonoBehaviour {
 
     public string Archivo;
     public List<Transform> PFs;
+    public int Tipo;
     public float Contador { get; set; }
 
     /// <summary>
@@ -29,9 +30,6 @@ public class GenerarMapa : MonoBehaviour {
                 //Dependiendo del caracter leído instancia uno u otro objeto prefabricado
                 switch (contenido[i])
                 {
-					case '_':
-						Instanciador(i, PFs[3]);
-						break;
                     case '$':
                         Instanciador(i, PFs[0]);
                         break;
@@ -39,19 +37,18 @@ public class GenerarMapa : MonoBehaviour {
                     case '#':
                         Instanciador(i, PFs[1]);
                         break;
-<<<<<<< HEAD
+
                     case '@':
                         Instanciador(i, PFs[2]);
                         break;
 
-                    case '*':
+                    case '_':
                         Instanciador(i, PFs[3]);
                         break;
-=======
-					case '*':
+
+                    case '*':
 						Instanciador(i, PFs[4]);
 						break;
->>>>>>> a6cc4adc12d834764cb5ce1a60503e7f93f048e0
 
                     case 'P':
                         Instanciador(i, PFs.First(P => P.name.Contains("Personaje")));
@@ -77,6 +74,13 @@ public class GenerarMapa : MonoBehaviour {
     /// <param name="aInstanciar"></param>
     public void Instanciador(int i, Transform aInstanciar)
     {
-        Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
+        if(Tipo == 1)
+        {
+            Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 5.3f, aInstanciar.localPosition.z), transform.rotation);
+        }
+        else
+        {
+            Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
+        }
     }
 }

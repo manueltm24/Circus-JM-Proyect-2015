@@ -19,14 +19,15 @@ public class Desplazamiento : Personaje
 	void Update ()
     {
         //Maneja la perdida de vidas del personaje al caer al suelo
-        if(transform.localPosition.y < PosicionInicialY - 1f)
+        if(transform.localPosition.y < PosicionInicialY - 1f && Application.loadedLevel != 4)
         {
             Vidas--;
             Application.LoadLevel(Application.loadedLevel);
             return;
         }
+        if (Application.loadedLevel != 4)
+            DesplazarseX();
 
-        DesplazarseX();
         EmpezarSalto();
         Saltar();
 		CambioVelocidad();
@@ -50,11 +51,26 @@ public class Desplazamiento : Personaje
 			Destroy(this.gameObject);
 			Application.Quit();
 		}
+
 		if (colisionado.name.Contains("Jarron"))
 		{
 			Destroy(this.gameObject);
 			Application.Quit();
 		}
+
+        if (colisionado.name.Contains("Cuerda"))
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        }
+
+        if (colisionado.name.Contains("Trampolin"))
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            TiempoUltimaActualizacion = DateTime.Now;
+            Saltando = false;
+            DireccionActual = E_Direcciones.Arriba;
+            Saltar();
+        }
     }
 
     /// <summary>
