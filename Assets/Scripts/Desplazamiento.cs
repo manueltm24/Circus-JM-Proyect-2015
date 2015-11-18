@@ -29,28 +29,14 @@ public class Desplazamiento : Personaje
 	
 	void Update ()
     {
-        //Maneja la perdida de vidas del personaje al caer al suelo
-        if(transform.localPosition.y < PosicionInicialY - 1f && Application.loadedLevel != 4)
-        {
-            Vidas--;
-            Application.LoadLevel(Application.loadedLevel);
-            return;
-        }
-
-        if (Application.loadedLevel != 4)
+        if (!Application.loadedLevelName.Contains("Cuerda"))
             DesplazarseX();
-<<<<<<< HEAD
         else
             MovimientoEnElAire();
 
-=======
-	
->>>>>>> ManuelT
         EmpezarSalto();
         Saltar();
 		CambioVelocidad();
-
-	
 	}
 
     /// <summary>
@@ -61,22 +47,11 @@ public class Desplazamiento : Personaje
     {
 		if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
         {
-			if(Application.loadedLevel==1){
-	            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-	            TiempoUltimaActualizacion = DateTime.Now;
-				Saltando = false;
-			}
+	        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+	        TiempoUltimaActualizacion = DateTime.Now;
+			Saltando = false;
         }
 
-		if ((colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final")))
-		{
-			if(Application.loadedLevel==3)
-			{
-				this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-				TiempoUltimaActualizacion = DateTime.Now;
-				Saltando = false;
-			}
-		}
 		if (colisionado.name.Contains("Aro"))
 		{
 			PosicionGuardada= transform.localPosition;
@@ -96,8 +71,8 @@ public class Desplazamiento : Personaje
 			Personaje.TraslacionX=0;
 			Vidas--;
 			Application.LoadLevel (NivelActual);
-
 		}
+
 		if (colisionado.name.Contains("Final"))
 		{
 			PosicionGuardada= transform.localPosition;
@@ -111,14 +86,11 @@ public class Desplazamiento : Personaje
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-<<<<<<< HEAD
             DireccionActual = E_Direcciones.Reposo;
             SaltandoDeTrampolin = false;
             Saltando = false;
-=======
 			this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-
->>>>>>> ManuelT
+            TraslacionX = 0;
         }
 
         if (colisionado.name.Contains("Trampolin"))
@@ -135,6 +107,18 @@ public class Desplazamiento : Personaje
         {
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+        }
+
+
+        //Maneja la perdida de vidas del personaje al caer al suelo
+        if (colisionado.name.Contains("Suelo") && (Application.loadedLevelName.Contains("Cuerda") || Application.loadedLevelName.Contains("Rueda")))
+        {
+            PosicionGuardada = transform.localPosition;
+            Destroy(this.gameObject);
+            Instantiate(Muerto1, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
+            Personaje.TraslacionX = 0;
+            Vidas--;
+            Application.LoadLevel(NivelActual);
         }
     }
 

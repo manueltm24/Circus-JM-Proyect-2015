@@ -83,8 +83,6 @@
     <Compile Include="Assets\Scripts\MoverFondo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\PruebaParaJeanLouis.txt" />
-    <None Include="Assets\blah.txt" />
     <None Include="Assets\mapa-aros.txt" />
     <None Include="Assets\mapa-cuerda-balanceo.txt" />
     <None Include="Assets\mapa-ruedas.txt" />

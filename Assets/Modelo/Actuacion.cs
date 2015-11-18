@@ -108,8 +108,8 @@ public class Actuacion : MonoBehaviour {
                 listaActuaciones = new List<Actuacion>
                     {
                         new Actuacion("¡Los aros de fuego de la muerte!", "punt-aros", "tiempo-aros"),
-                        new Actuacion("¡La cuerda floja resbaladiza!", "punt-cuerda", "tiempo-cuerda"),
-                        new Actuacion("¡Las ruedas rodantes!", "punt-ruedas", "tiempo-ruedas")
+                        new Actuacion("¡Las ruedas rodantes!", "punt-ruedas", "tiempo-ruedas"),
+                        new Actuacion("¡El salto de cuerdas mortal!", "punt-balanceo-cuerda", "tiempo-balanceo-cuerda"),
                     };
             }
             return listaActuaciones;

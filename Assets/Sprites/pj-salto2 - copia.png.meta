@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: b28b3f17e37886d4bb91c2fd03c84ab5
-timeCreated: 1446251346
+guid: 38ed72f94cbe08143a6d693b1d4599ad
+timeCreated: 1447824361
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: pj-salto2 - copia_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,18 +39,28 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 99, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: pj-salto2 - copia_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
