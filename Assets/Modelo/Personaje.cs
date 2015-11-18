@@ -36,6 +36,8 @@ public class Personaje : MonoBehaviour
 
     public float PosicionInicialY { get; set; }
 
+    public bool SaltandoDeTrampolin { get; set; }
+
     #endregion
 
     #region "Comportamientos"
@@ -77,6 +79,21 @@ public class Personaje : MonoBehaviour
             Saltando = true;
             DireccionActual = E_Direcciones.Reposo;
             TiempoUltimaActualizacion = DateTime.Now;
+        }
+    }
+
+    public void MovimientoEnElAire()
+    {
+        if(SaltandoDeTrampolin)
+        {
+            TraslacionX = Input.GetAxis("Horizontal") * Velocidad.x;
+            if (TraslacionX > 0)
+                DireccionActual = E_Direcciones.Este;
+            if (TraslacionX < 0)
+                DireccionActual = E_Direcciones.Oeste;
+
+            TraslacionX *= Time.deltaTime;
+            transform.Translate(TraslacionX, 0, 0);
         }
     }
 

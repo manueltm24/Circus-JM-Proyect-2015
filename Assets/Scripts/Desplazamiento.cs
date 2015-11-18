@@ -25,8 +25,11 @@ public class Desplazamiento : Personaje
             Application.LoadLevel(Application.loadedLevel);
             return;
         }
+
         if (Application.loadedLevel != 4)
             DesplazarseX();
+        else
+            MovimientoEnElAire();
 
         EmpezarSalto();
         Saltar();
@@ -58,9 +61,14 @@ public class Desplazamiento : Personaje
 			Application.Quit();
 		}
 
-        if (colisionado.name.Contains("Cuerda"))
+        if (colisionado.name.Contains("Cuerda") && SaltandoDeTrampolin)
         {
+            this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            DireccionActual = E_Direcciones.Reposo;
+            SaltandoDeTrampolin = false;
+            Saltando = false;
         }
 
         if (colisionado.name.Contains("Trampolin"))
@@ -69,7 +77,14 @@ public class Desplazamiento : Personaje
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
             DireccionActual = E_Direcciones.Arriba;
+            SaltandoDeTrampolin = true;
             Saltar();
+        }
+
+        if (colisionado.name.Contains("Barra"))
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
     }
 
@@ -82,7 +97,11 @@ public class Desplazamiento : Personaje
         if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda"))
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
     }
-		public void CambioVelocidad()
+
+    /// <summary>
+    /// Acelera al persnaje
+    /// </summary>
+	public void CambioVelocidad()
 	{
 		if (Input.GetKey(KeyCode.W))
 			Velocidad = new Vector3(6f, 0);

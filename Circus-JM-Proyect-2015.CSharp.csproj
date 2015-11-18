@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Assets\Modelo\Actuacion.cs" />
     <Compile Include="Assets\Modelo\Personaje.cs" />
+    <Compile Include="Assets\Scripts\BalancearseCuerdas.cs" />
     <Compile Include="Assets\Scripts\CambiarTextoActuacion.cs" />
     <Compile Include="Assets\Scripts\CerrarCirco.cs" />
     <Compile Include="Assets\Scripts\ContarVidas.cs" />
