@@ -5,6 +5,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Runtime.Serialization;
 
 /// <summary>
 /// Describe el desplazamiento del personaje principal y las interrupciones que puede encontrar en su trayecto
@@ -17,9 +18,8 @@ public class Desplazamiento : Personaje
 
 	public Vector3 PosicionGuardada { get; set;}
 
-	void Awake ()
+    void Awake ()
     {
-
 		NivelActual = Application.loadedLevel;
         Velocidad = new Vector3(4f, 2f);
         TiempoUltimaActualizacion = DateTime.Now;
@@ -30,14 +30,23 @@ public class Desplazamiento : Personaje
 	void Update ()
     {
         if (!Application.loadedLevelName.Contains("Cuerda"))
-            DesplazarseX();
+            if (Application.loadedLevelName.Contains("Aro"))
+                DesplazarseX(true);
+            else
+                DesplazarseX();
         else
             MovimientoEnElAire();
+        
 
         EmpezarSalto();
         Saltar();
 		CambioVelocidad();
-	}
+    }
+
+    void FixedUpdate()
+    {
+        Tiempo = (int)Time.timeSinceLevelLoad + TiempoAntesMorir;
+    }
 
     /// <summary>
     /// Maneja las colisiones del personaje con respecto a \colisionado\
@@ -50,6 +59,7 @@ public class Desplazamiento : Personaje
 	        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
 	        TiempoUltimaActualizacion = DateTime.Now;
 			Saltando = false;
+            Puntuacion += 200;
         }
 
 		if (colisionado.name.Contains("Aro"))
@@ -59,6 +69,7 @@ public class Desplazamiento : Personaje
 			Instantiate(Muerto1, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
 			Personaje.TraslacionX=0;
 			Vidas--;
+            TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
 			Application.LoadLevel (NivelActual);
 
 		}
@@ -70,7 +81,8 @@ public class Desplazamiento : Personaje
 			Instantiate(Muerto1, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
 			Personaje.TraslacionX=0;
 			Vidas--;
-			Application.LoadLevel (NivelActual);
+            TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
+            Application.LoadLevel (NivelActual);
 		}
 
 		if (colisionado.name.Contains("Final"))
@@ -78,8 +90,14 @@ public class Desplazamiento : Personaje
 			PosicionGuardada= transform.localPosition;
 			Destroy(this.gameObject);
 			Instantiate(Ganador, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
-			Personaje.TraslacionX=0;
-		}
+			Personaje.TraslacionX = 0;
+
+            if (Puntuacion > Actuacion.ListaActuaciones[Application.loadedLevel - 1].PuntuacionMaxima)
+                XML_GuardarNuevaPuntuacionMaxima();
+
+            if (Tiempo < Actuacion.ListaActuaciones[Application.loadedLevel - 1].TiempoRecord)
+                XML_GuardarNuevoTiempoRecord();
+        }
 
         if (colisionado.name.Contains("Cuerda") && SaltandoDeTrampolin)
         {
@@ -118,6 +136,7 @@ public class Desplazamiento : Personaje
             Instantiate(Muerto1, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
             Personaje.TraslacionX = 0;
             Vidas--;
+            TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
             Application.LoadLevel(NivelActual);
         }
     }
@@ -133,7 +152,7 @@ public class Desplazamiento : Personaje
     }
 
     /// <summary>
-    /// Acelera al persnaje
+    /// Acelera al personaje
     /// </summary>
 	public void CambioVelocidad()
 	{
@@ -142,4 +161,30 @@ public class Desplazamiento : Personaje
 		else
 			Velocidad = new Vector3(4f, 0);
 	}
+
+
+
+    /// <summary>
+    /// Guarda la puntuación maxima
+    /// </summary>
+    private void XML_GuardarNuevaPuntuacionMaxima()
+    {
+        using (var fileStream = new FileStream(Actuacion.ListaActuaciones[Application.loadedLevel - 1].PuntuacionMaximaArchivo + ".xml", FileMode.Create))
+        {
+            DataContractSerializer serializer = new DataContractSerializer(typeof(int));
+            serializer.WriteObject(fileStream, Personaje.Puntuacion);
+        }
+    }
+
+    /// <summary>
+    /// Guarda el tiempo record
+    /// </summary>
+    private void XML_GuardarNuevoTiempoRecord()
+    {
+        using (var fileStream = new FileStream(Actuacion.ListaActuaciones[Application.loadedLevel - 1].TiempoRecordArchivo + ".xml", FileMode.Create))
+        {
+            DataContractSerializer serializer = new DataContractSerializer(typeof(double));
+            serializer.WriteObject(fileStream, Personaje.Tiempo);
+        }
+    }
 }

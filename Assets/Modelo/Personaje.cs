@@ -38,6 +38,12 @@ public class Personaje : MonoBehaviour
 
     public bool SaltandoDeTrampolin { get; set; }
 
+    public static int Puntuacion = 0;
+
+    public static double Tiempo = 0;
+
+    public static int TiempoAntesMorir = 0;
+
     #endregion
 
     #region "Comportamientos"
@@ -45,9 +51,13 @@ public class Personaje : MonoBehaviour
     /// <summary>
     /// Desplaza al personaje en X con respecto a la tecla presionada
     /// </summary>
-    public void DesplazarseX()
+    public void DesplazarseX(bool auto = false)
     {
-        TraslacionX = Input.GetAxis("Horizontal") * Velocidad.x;
+        if (auto)
+            TraslacionX = Velocidad.x;
+        else
+            TraslacionX = Input.GetAxis("Horizontal") * Velocidad.x;
+
         if (TraslacionX > 0)
             DireccionActual = E_Direcciones.Este;
         if (TraslacionX < 0)

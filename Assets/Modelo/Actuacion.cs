@@ -15,7 +15,11 @@ public class Actuacion : MonoBehaviour {
 
     public int PuntuacionMaxima { get; set; }
 
-    public float TiempoRecord { get; set; }
+    public double TiempoRecord { get; set; }
+
+    public string PuntuacionMaximaArchivo { get; set; }
+
+    public string TiempoRecordArchivo { get; set; }
 
     #endregion
 
@@ -29,6 +33,8 @@ public class Actuacion : MonoBehaviour {
     public Actuacion(string nombre, string puntuacionMaximaArchivo, string tiempoRecordArchivo)
     {
         Nombre = nombre;
+        PuntuacionMaximaArchivo = puntuacionMaximaArchivo;
+        TiempoRecordArchivo = tiempoRecordArchivo;
         PuntuacionMaxima = ObtenerPuntacion(puntuacionMaximaArchivo);
         TiempoRecord = ObtenerTiempoRecord(tiempoRecordArchivo);
     }
@@ -69,16 +75,16 @@ public class Actuacion : MonoBehaviour {
     /// </summary>
     /// <param name="nombreArchivo">Nombre del archivo donde se encuentra el tiempo record de esta actuación</param>
     /// <returns>Tiempo record obtenido en la actuación</returns>
-    public float ObtenerTiempoRecord(string nombreArchivo)
+    public double ObtenerTiempoRecord(string nombreArchivo)
     {
-        float tiempoRecord;
+        double tiempoRecord;
         using (var fileStream = new FileStream(nombreArchivo + ".xml", FileMode.OpenOrCreate))
         {
-            DataContractSerializer serializer = new DataContractSerializer(typeof(float));
+            DataContractSerializer serializer = new DataContractSerializer(typeof(double));
 
             try
             {
-                var tiempoCapturado = (float)serializer.ReadObject(fileStream);
+                var tiempoCapturado = (double)serializer.ReadObject(fileStream);
                 tiempoRecord = tiempoCapturado; //Se obtiene el tiempo record registrado.
             }
             catch

@@ -38,16 +38,4 @@ public class CambiarTextoActuacion : MonoBehaviour {
             TextoTiempoRecord.text = "Tiempo Record: " + Actuacion.ListaActuaciones[TextoActual].TiempoRecord.ToString() + "s";
         }
     }
-
-    /// <summary>
-    /// Guarda la puntuación maxima. ¡ESTO VA EN CADA ACTUACION, NO AQUI!
-    /// </summary>
-    private void XML_GuardarNuevaPuntuacionMaxima()
-    {
-        using (var fileStream = new FileStream("punt-aros.xml", FileMode.Create))
-        {
-            DataContractSerializer serializer = new DataContractSerializer(typeof(int));
-            serializer.WriteObject(fileStream, Actuacion.ListaActuaciones[0].PuntuacionMaxima);
-        }
-    }
 }
