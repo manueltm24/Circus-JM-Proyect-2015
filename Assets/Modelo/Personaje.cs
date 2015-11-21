@@ -32,7 +32,7 @@ public class Personaje : MonoBehaviour
 
     public static float TraslacionX { get; set; }
 
-    public static int Vidas = 5;
+    public static int Vidas = LevantarTelon.DificultadActual.VidasIniciales;
 
     public float PosicionInicialY { get; set; }
 
@@ -84,7 +84,6 @@ public class Personaje : MonoBehaviour
         if (DireccionActual == E_Direcciones.Arriba && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.04))
         {
             this.gameObject.GetComponent<Rigidbody2D>().velocity += Vector2.up * 6.8f;
-            //transform.Translate(0, Velocidad.y, 0);
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
             Saltando = true;
             DireccionActual = E_Direcciones.Reposo;
@@ -92,6 +91,9 @@ public class Personaje : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Permite al jugador moverse en el aire luego de saltar sobre un trampolin
+    /// </summary>
     public void MovimientoEnElAire()
     {
         if (SaltandoDeTrampolin)
@@ -105,6 +107,20 @@ public class Personaje : MonoBehaviour
             TraslacionX *= Time.deltaTime;
             transform.Translate(TraslacionX, 0, 0);
         }
+    }
+
+    /// <summary>
+    /// Define lo que sucede al morir
+    /// </summary>
+    public void Morir(Transform pf_morir)
+    {
+        Vector3 posicionGuardada = transform.localPosition;
+        Destroy(this.gameObject);
+        Instantiate(pf_morir, new Vector3(posicionGuardada.x, posicionGuardada.y, posicionGuardada.z), transform.rotation);
+        Personaje.TraslacionX = 0;
+        Vidas--;
+        TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     #endregion

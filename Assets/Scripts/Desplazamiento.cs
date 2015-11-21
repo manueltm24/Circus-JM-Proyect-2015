@@ -31,7 +31,7 @@ public class Desplazamiento : Personaje
     {
         if (!Application.loadedLevelName.Contains("Cuerda"))
             if (Application.loadedLevelName.Contains("Aro"))
-                DesplazarseX(true);
+                DesplazarseX(LevantarTelon.DificultadActual.ModoAutomatico);
             else
                 DesplazarseX();
         else
@@ -60,31 +60,8 @@ public class Desplazamiento : Personaje
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
             Puntuacion += 200;
-        }
-
-        if (colisionado.name.Contains("Aro"))
-        {
-            PosicionGuardada = transform.localPosition;
-            Destroy(this.gameObject);
-            Instantiate(Muerto1, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
-            Personaje.TraslacionX = 0;
-            Vidas--;
-            TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
-            Application.LoadLevel(NivelActual);
-
-        }
-
-        if (colisionado.name.Contains("Jarron"))
-        {
-            PosicionGuardada = transform.localPosition;
-            Destroy(this.gameObject);
-            Instantiate(Muerto1, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
-            Personaje.TraslacionX = 0;
-            Vidas--;
-            TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
-            Application.LoadLevel(NivelActual);
-        }
-
+        }        
+        
         if (colisionado.name.Contains("Final"))
         {
             PosicionGuardada = transform.localPosition;
@@ -127,18 +104,14 @@ public class Desplazamiento : Personaje
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
 
+        //Maneja la perdida de vidas del personaje al colisionar con objetos asesinos
+        if (colisionado.name.Contains("Jarron") || colisionado.name.Contains("Aro"))
+            Morir(Muerto1);
 
         //Maneja la perdida de vidas del personaje al caer al suelo
         if (colisionado.name.Contains("Suelo") && (Application.loadedLevelName.Contains("Cuerda") || Application.loadedLevelName.Contains("Rueda")))
-        {
-            PosicionGuardada = transform.localPosition;
-            Destroy(this.gameObject);
-            Instantiate(Muerto1, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
-            Personaje.TraslacionX = 0;
-            Vidas--;
-            TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
-            Application.LoadLevel(NivelActual);
-        }
+            Morir(Muerto1);
+
     }
 
     /// <summary>
@@ -161,8 +134,6 @@ public class Desplazamiento : Personaje
         else
             Velocidad = new Vector3(4f, 0);
     }
-
-
 
     /// <summary>
     /// Guarda la puntuación maxima

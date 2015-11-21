@@ -34,7 +34,7 @@ public class DesplazarRueda : Personaje
     {
         if (colisionado.name.Contains("Personaje"))
         {
-            Velocidad = new Vector3(4f, 0);
+            Velocidad = colisionado.GetComponent<Desplazamiento>().Velocidad;
             PersonajeEncima = true;
         }
 
