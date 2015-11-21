@@ -11,16 +11,16 @@ public class DesplazarRueda : Personaje
     public bool MoverseAutomaticamente { get; set; }
     public TimeSpan TiempoMoverseAuto { get; set; }
 
-    void Awake ()
+    void Awake()
     {
         Velocidad = new Vector3(0.2f, 0);
         DireccionActual = E_Direcciones.Oeste;
         TiempoUltimaActualizacion = DateTime.Now;
     }
 
-	void Update ()
+    void Update()
     {
-        if(PersonajeEncima)
+        if (PersonajeEncima)
             DesplazarseX();
         else
             DesplazamientoRueda();

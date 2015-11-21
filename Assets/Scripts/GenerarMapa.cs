@@ -12,6 +12,7 @@ public class GenerarMapa : MonoBehaviour {
     public string Archivo;
     public List<Transform> PFs;
     public int Tipo;
+
     public float Contador { get; set; }
 
     /// <summary>

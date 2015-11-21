@@ -6,7 +6,7 @@ using System;
 /// Describe al personaje principal del juego
 /// </summary>
 public class Personaje : MonoBehaviour
-{    
+{
     #region "Enums"
 
     public enum E_Direcciones
@@ -82,8 +82,8 @@ public class Personaje : MonoBehaviour
     public void Saltar()
     {
         if (DireccionActual == E_Direcciones.Arriba && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.04))
-		{
-			this.gameObject.GetComponent<Rigidbody2D>().velocity += Vector2.up * 6.8f;
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().velocity += Vector2.up * 6.8f;
             //transform.Translate(0, Velocidad.y, 0);
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
             Saltando = true;
@@ -94,7 +94,7 @@ public class Personaje : MonoBehaviour
 
     public void MovimientoEnElAire()
     {
-        if(SaltandoDeTrampolin)
+        if (SaltandoDeTrampolin)
         {
             TraslacionX = Input.GetAxis("Horizontal") * Velocidad.x;
             if (TraslacionX > 0)

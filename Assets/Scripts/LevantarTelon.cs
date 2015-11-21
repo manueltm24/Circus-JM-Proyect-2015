@@ -6,8 +6,9 @@ using System.Collections;
 /// </summary>
 public class LevantarTelon : MonoBehaviour
 {
+    public static Dificultad DificultadActual { get; set; }
 
-	void Update () {
+    void Update () {
         if (Input.GetButton("Fire3") || Input.GetKey(KeyCode.Space))
         {
             CargarActuacion();

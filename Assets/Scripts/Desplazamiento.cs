@@ -12,22 +12,22 @@ using System.Runtime.Serialization;
 /// </summary>
 public class Desplazamiento : Personaje
 {
-	public Transform Ganador;
-	public Transform Muerto1;
-	public int NivelActual;
+    public Transform Ganador;
+    public Transform Muerto1;
+    public int NivelActual;
 
-	public Vector3 PosicionGuardada { get; set;}
+    public Vector3 PosicionGuardada { get; set; }
 
-    void Awake ()
+    void Awake()
     {
-		NivelActual = Application.loadedLevel;
+        NivelActual = Application.loadedLevel;
         Velocidad = new Vector3(4f, 2f);
         TiempoUltimaActualizacion = DateTime.Now;
         DireccionActual = E_Direcciones.Reposo;
         PosicionInicialY = transform.localPosition.y;
     }
-	
-	void Update ()
+
+    void Update()
     {
         if (!Application.loadedLevelName.Contains("Cuerda"))
             if (Application.loadedLevelName.Contains("Aro"))
@@ -36,11 +36,11 @@ public class Desplazamiento : Personaje
                 DesplazarseX();
         else
             MovimientoEnElAire();
-        
+
 
         EmpezarSalto();
         Saltar();
-		CambioVelocidad();
+        CambioVelocidad();
     }
 
     void FixedUpdate()
@@ -54,43 +54,43 @@ public class Desplazamiento : Personaje
     /// <param name="colisionado">Objeto con el que se colisionó</param>
     public void OnTriggerEnter2D(Collider2D colisionado)
     {
-		if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
+        if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
         {
-	        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-	        TiempoUltimaActualizacion = DateTime.Now;
-			Saltando = false;
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            TiempoUltimaActualizacion = DateTime.Now;
+            Saltando = false;
             Puntuacion += 200;
         }
 
-		if (colisionado.name.Contains("Aro"))
-		{
-			PosicionGuardada= transform.localPosition;
-			Destroy(this.gameObject);
-			Instantiate(Muerto1, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
-			Personaje.TraslacionX=0;
-			Vidas--;
+        if (colisionado.name.Contains("Aro"))
+        {
+            PosicionGuardada = transform.localPosition;
+            Destroy(this.gameObject);
+            Instantiate(Muerto1, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
+            Personaje.TraslacionX = 0;
+            Vidas--;
             TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
-			Application.LoadLevel (NivelActual);
+            Application.LoadLevel(NivelActual);
 
-		}
+        }
 
-		if (colisionado.name.Contains("Jarron"))
-		{
-			PosicionGuardada= transform.localPosition;
-			Destroy(this.gameObject);
-			Instantiate(Muerto1, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
-			Personaje.TraslacionX=0;
-			Vidas--;
+        if (colisionado.name.Contains("Jarron"))
+        {
+            PosicionGuardada = transform.localPosition;
+            Destroy(this.gameObject);
+            Instantiate(Muerto1, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
+            Personaje.TraslacionX = 0;
+            Vidas--;
             TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
-            Application.LoadLevel (NivelActual);
-		}
+            Application.LoadLevel(NivelActual);
+        }
 
-		if (colisionado.name.Contains("Final"))
-		{
-			PosicionGuardada= transform.localPosition;
-			Destroy(this.gameObject);
-			Instantiate(Ganador, new Vector3(PosicionGuardada.x,PosicionGuardada.y,PosicionGuardada.z), transform.rotation);
-			Personaje.TraslacionX = 0;
+        if (colisionado.name.Contains("Final"))
+        {
+            PosicionGuardada = transform.localPosition;
+            Destroy(this.gameObject);
+            Instantiate(Ganador, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
+            Personaje.TraslacionX = 0;
 
             if (Puntuacion > Actuacion.ListaActuaciones[Application.loadedLevel - 1].PuntuacionMaxima)
                 XML_GuardarNuevaPuntuacionMaxima();
@@ -107,7 +107,7 @@ public class Desplazamiento : Personaje
             DireccionActual = E_Direcciones.Reposo;
             SaltandoDeTrampolin = false;
             Saltando = false;
-			this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+            this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             TraslacionX = 0;
         }
 
@@ -155,12 +155,12 @@ public class Desplazamiento : Personaje
     /// Acelera al personaje
     /// </summary>
 	public void CambioVelocidad()
-	{
-		if (Input.GetKey(KeyCode.W))
-			Velocidad = new Vector3(6f, 0);
-		else
-			Velocidad = new Vector3(4f, 0);
-	}
+    {
+        if (Input.GetKey(KeyCode.W))
+            Velocidad = new Vector3(6f, 0);
+        else
+            Velocidad = new Vector3(4f, 0);
+    }
 
 
 
