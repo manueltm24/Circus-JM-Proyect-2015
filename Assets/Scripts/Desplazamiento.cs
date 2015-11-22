@@ -121,7 +121,10 @@ public class Desplazamiento : Personaje
     public void OnTriggerExit2D(Collider2D colisionado)
     {
         if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda"))
+        {
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+        }
     }
 
     /// <summary>

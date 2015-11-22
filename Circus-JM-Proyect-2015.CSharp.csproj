@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\BalancearseCuerdas.cs" />
     <Compile Include="Assets\Scripts\CambiarTextoActuacion.cs" />
     <Compile Include="Assets\Scripts\CerrarCirco.cs" />
+    <Compile Include="Assets\Scripts\ColisionarRuedas.cs" />
     <Compile Include="Assets\Scripts\ContarPuntuacion.cs" />
     <Compile Include="Assets\Scripts\ContarTiempo.cs" />
     <Compile Include="Assets\Scripts\ContarVidas.cs" />

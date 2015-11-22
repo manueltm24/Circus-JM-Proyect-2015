@@ -10,6 +10,7 @@ public class DesplazarRueda : Personaje
     public bool PersonajeEncima { get; set; }
     public bool MoverseAutomaticamente { get; set; }
     public TimeSpan TiempoMoverseAuto { get; set; }
+    public bool Choco { get; set; }
 
     void Awake()
     {
@@ -24,6 +25,12 @@ public class DesplazarRueda : Personaje
             DesplazarseX();
         else
             DesplazamientoRueda();
+
+        if (Choco && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.2))
+        {
+            Choco = false;
+            TiempoUltimaActualizacion = DateTime.Now;
+        }
     }
 
     /// <summary>
@@ -32,22 +39,10 @@ public class DesplazarRueda : Personaje
     /// <param name="colisionado">Objeto con el que se colisionó</param>
     public void OnTriggerEnter2D(Collider2D colisionado)
     {
-        if (colisionado.name.Contains("Personaje"))
+        if (colisionado.name.Contains("Personaje") && !Choco)
         {
             Velocidad = colisionado.GetComponent<Desplazamiento>().Velocidad;
             PersonajeEncima = true;
-        }
-
-        if (colisionado.name.Contains("Rueda") && colisionado != this.gameObject)
-        {
-            PersonajeEncima = false;
-            Velocidad = new Vector3(0.2f, 0);
-            TiempoUltimaActualizacion = DateTime.Now;
-
-            if (DireccionActual == E_Direcciones.Oeste)
-                DireccionActual = E_Direcciones.Este;
-            else
-                DireccionActual = E_Direcciones.Oeste;
         }
     }
 
