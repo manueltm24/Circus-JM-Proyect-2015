@@ -15,6 +15,7 @@ public class Desplazamiento : Personaje
     public Transform Ganador;
     public Transform Muerto1;
     public int NivelActual;
+    public float VelocidadInicialAnimacion { get; set; }
 
     public Vector3 PosicionGuardada { get; set; }
 
@@ -25,6 +26,7 @@ public class Desplazamiento : Personaje
         TiempoUltimaActualizacion = DateTime.Now;
         DireccionActual = E_Direcciones.Reposo;
         PosicionInicialY = transform.localPosition.y;
+        VelocidadInicialAnimacion = this.gameObject.GetComponent<Animator>().speed;
     }
 
     void Update()
@@ -41,6 +43,9 @@ public class Desplazamiento : Personaje
         EmpezarSalto();
         Saltar();
         CambioVelocidad();
+
+        if (Saltando)
+            this.gameObject.GetComponent<Animator>().speed = 0;
     }
 
     void FixedUpdate()
@@ -60,6 +65,7 @@ public class Desplazamiento : Personaje
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
             Puntuacion += 200;
+            this.gameObject.GetComponent<Animator>().speed = VelocidadInicialAnimacion;
         }        
         
         if (colisionado.name.Contains("Final"))
