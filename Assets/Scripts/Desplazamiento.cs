@@ -69,10 +69,10 @@ public class Desplazamiento : Personaje
             Instantiate(Ganador, new Vector3(PosicionGuardada.x, PosicionGuardada.y, PosicionGuardada.z), transform.rotation);
             Personaje.TraslacionX = 0;
 
-            if (Puntuacion > Actuacion.ListaActuaciones[Application.loadedLevel - 1].PuntuacionMaxima)
+            if (Puntuacion > CambiarTextoActuacion.PuntuacionMaxima)
                 XML_GuardarNuevaPuntuacionMaxima();
 
-            if (Tiempo < Actuacion.ListaActuaciones[Application.loadedLevel - 1].TiempoRecord)
+            if (Tiempo < CambiarTextoActuacion.TiempoRecord)
                 XML_GuardarNuevoTiempoRecord();
         }
 
@@ -140,7 +140,7 @@ public class Desplazamiento : Personaje
     /// </summary>
     private void XML_GuardarNuevaPuntuacionMaxima()
     {
-        using (var fileStream = new FileStream(Actuacion.ListaActuaciones[Application.loadedLevel - 1].PuntuacionMaximaArchivo + ".xml", FileMode.Create))
+        using (var fileStream = new FileStream(Actuacion.ListaActuaciones[Application.loadedLevel - 1].PuntuacionMaximaArchivo + LevantarTelon.DificultadActual.Sufijo + ".xml", FileMode.Create))
         {
             DataContractSerializer serializer = new DataContractSerializer(typeof(int));
             serializer.WriteObject(fileStream, Personaje.Puntuacion);
@@ -152,7 +152,7 @@ public class Desplazamiento : Personaje
     /// </summary>
     private void XML_GuardarNuevoTiempoRecord()
     {
-        using (var fileStream = new FileStream(Actuacion.ListaActuaciones[Application.loadedLevel - 1].TiempoRecordArchivo + ".xml", FileMode.Create))
+        using (var fileStream = new FileStream(Actuacion.ListaActuaciones[Application.loadedLevel - 1].TiempoRecordArchivo + LevantarTelon.DificultadActual.Sufijo + ".xml", FileMode.Create))
         {
             DataContractSerializer serializer = new DataContractSerializer(typeof(double));
             serializer.WriteObject(fileStream, Personaje.Tiempo);

@@ -8,10 +8,8 @@ using System.Linq;
 /// Genera el mapa de la actuación a partir de un archivo de texto
 /// </summary>
 public class GenerarMapa : MonoBehaviour {
-
-    public string Archivo;
+    
     public List<Transform> PFs;
-    public int Tipo;
 
     public float Contador { get; set; }
 
@@ -20,7 +18,7 @@ public class GenerarMapa : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        var sr = new StreamReader(Application.dataPath + "/" + Archivo);
+        var sr = new StreamReader(Application.dataPath + "/" + Actuacion.ListaActuaciones[MainMenu_MoverCamara.Actual].Mapa + LevantarTelon.DificultadActual.Sufijo + ".txt");
         while (!sr.EndOfStream)
         {
             string contenido = sr.ReadLine();
@@ -75,13 +73,9 @@ public class GenerarMapa : MonoBehaviour {
     /// <param name="aInstanciar"></param>
     public void Instanciador(int i, Transform aInstanciar)
     {
-        if(Tipo == 1)
-        {
+        if(Actuacion.ListaActuaciones[MainMenu_MoverCamara.Actual].Tipo == Actuacion.E_TipoActuacion.Techo)
             Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 5.3f, aInstanciar.localPosition.z), transform.rotation);
-        }
         else
-        {
             Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
-        }
     }
 }
