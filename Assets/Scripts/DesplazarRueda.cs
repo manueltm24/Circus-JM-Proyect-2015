@@ -11,12 +11,20 @@ public class DesplazarRueda : Personaje
     public bool MoverseAutomaticamente { get; set; }
     public TimeSpan TiempoMoverseAuto { get; set; }
     public bool Choco { get; set; }
-
+    public Vector3 UltimoCheckpointPersonaje { get; set; }
+    public Vector3 CheckPoint { get; set; }
     void Awake()
     {
+        if(CheckPoint != Vector3.zero)
+        {            
+            transform.localPosition = new Vector3(CheckPoint.x - 2.8f, CheckPoint.y, CheckPoint.z);
+        }
+
         Velocidad = new Vector3(0.2f, 0);
         DireccionActual = E_Direcciones.Oeste;
         TiempoUltimaActualizacion = DateTime.Now;
+        UltimoCheckpointPersonaje = Desplazamiento.CheckPoint;
+        CheckPoint = transform.localPosition;
     }
 
     void Update()
@@ -30,6 +38,12 @@ public class DesplazarRueda : Personaje
         {
             Choco = false;
             TiempoUltimaActualizacion = DateTime.Now;
+        }
+
+        if(UltimoCheckpointPersonaje != Desplazamiento.CheckPoint)
+        {
+            UltimoCheckpointPersonaje = Desplazamiento.CheckPoint;
+            CheckPoint = transform.localPosition;
         }
     }
 

@@ -15,18 +15,28 @@ public class Desplazamiento : Personaje
     public Transform Ganador;
     public Transform Muerto1;
     public int NivelActual;
+
     public float VelocidadInicialAnimacion { get; set; }
 
     public Vector3 PosicionGuardada { get; set; }
 
+    public static Vector3 CheckPoint { get; set; }
+
     void Awake()
     {
+        if (CheckPoint != Vector3.zero)
+        {
+            transform.localPosition = CheckPoint;
+            Camera.main.transform.localPosition = new Vector3(CheckPoint.x + 4f, 0, -10);
+        }
+
         NivelActual = Application.loadedLevel;
         Velocidad = new Vector3(4f, 2f);
         TiempoUltimaActualizacion = DateTime.Now;
         DireccionActual = E_Direcciones.Reposo;
         PosicionInicialY = transform.localPosition.y;
         VelocidadInicialAnimacion = this.gameObject.GetComponent<Animator>().speed;
+        CheckPoint = transform.localPosition;
     }
 
     void Update()
@@ -64,9 +74,14 @@ public class Desplazamiento : Personaje
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
-            Puntuacion += 200;
             this.gameObject.GetComponent<Animator>().speed = VelocidadInicialAnimacion;
-        }        
+        }
+
+        if (colisionado.name.Contains("Rueda") || colisionado.name == "PF_CuerdaBalanceo(Clone)" || colisionado.name.Contains("AroPasado"))
+        {
+            Puntuacion += 200;
+            CheckPoint = transform.localPosition;
+        }
         
         if (colisionado.name.Contains("Final"))
         {
