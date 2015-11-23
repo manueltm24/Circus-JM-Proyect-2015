@@ -44,6 +44,14 @@ public class Personaje : MonoBehaviour
 
     public static int TiempoAntesMorir = 0;
 
+    public static bool ResetRequest { get; set; }
+
+    public static Transform Muerto { get; set; }
+
+    public static bool Enterrado { get; set; }
+
+    public static DateTime TiempoMuerte { get; set; }
+
     #endregion
 
     #region "Comportamientos"
@@ -116,11 +124,14 @@ public class Personaje : MonoBehaviour
     {
         Vector3 posicionGuardada = transform.localPosition;
         Destroy(this.gameObject);
-        Instantiate(pf_morir, new Vector3(posicionGuardada.x, posicionGuardada.y, posicionGuardada.z), transform.rotation);
+        Muerto = Instantiate(pf_morir, new Vector3(posicionGuardada.x, posicionGuardada.y, posicionGuardada.z), transform.rotation) as Transform;
+        TiempoMuerte = DateTime.Now;
         Personaje.TraslacionX = 0;
         Vidas--;
         TiempoAntesMorir = (int)Time.timeSinceLevelLoad;
-        Application.LoadLevel(Application.loadedLevel);
+        ResetRequest = true;
+        Desplazamiento.ResetRequestCompletado = false;
+        //Application.LoadLevel(Application.loadedLevel);
     }
 
     #endregion

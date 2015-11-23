@@ -22,14 +22,10 @@ public class Desplazamiento : Personaje
 
     public static Vector3 CheckPoint { get; set; }
 
+    public static bool ResetRequestCompletado { get; set; }
+
     void Awake()
     {
-        if (CheckPoint != Vector3.zero)
-        {
-            transform.localPosition = CheckPoint;
-            Camera.main.transform.localPosition = new Vector3(CheckPoint.x + 4f, 0, -10);
-        }
-
         NivelActual = Application.loadedLevel;
         Velocidad = new Vector3(4f, 2f);
         TiempoUltimaActualizacion = DateTime.Now;
@@ -40,7 +36,7 @@ public class Desplazamiento : Personaje
     }
 
     void Update()
-    {
+    {   
         if (!Application.loadedLevelName.Contains("Cuerda"))
             if (Application.loadedLevelName.Contains("Aro"))
                 DesplazarseX(LevantarTelon.DificultadActual.ModoAutomatico);

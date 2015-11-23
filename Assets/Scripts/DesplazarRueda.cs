@@ -13,13 +13,9 @@ public class DesplazarRueda : Personaje
     public bool Choco { get; set; }
     public Vector3 UltimoCheckpointPersonaje { get; set; }
     public Vector3 CheckPoint { get; set; }
+    public bool ResetRequestCompletado { get; set; }
     void Awake()
     {
-        if(CheckPoint != Vector3.zero)
-        {            
-            transform.localPosition = new Vector3(CheckPoint.x - 2.8f, CheckPoint.y, CheckPoint.z);
-        }
-
         Velocidad = new Vector3(0.2f, 0);
         DireccionActual = E_Direcciones.Oeste;
         TiempoUltimaActualizacion = DateTime.Now;
@@ -29,8 +25,23 @@ public class DesplazarRueda : Personaje
 
     void Update()
     {
+        if (!Desplazamiento.ResetRequestCompletado)
+            ResetRequestCompletado = false;
+
+        if (Enterrado && !ResetRequestCompletado)
+        {
+            transform.localPosition = new Vector3(CheckPoint.x, CheckPoint.y, CheckPoint.z);
+            ResetRequestCompletado = true;
+        }
+
         if (PersonajeEncima)
+        {
             DesplazarseX();
+            if (Enterrado)
+            {
+                Enterrado = false;
+            }
+        }
         else
             DesplazamientoRueda();
 
