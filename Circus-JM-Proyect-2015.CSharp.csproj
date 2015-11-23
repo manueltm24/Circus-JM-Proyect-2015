@@ -86,6 +86,10 @@
     <Compile Include="Assets\Scripts\ContarVidas.cs" />
     <Compile Include="Assets\Scripts\Desplazamiento.cs" />
     <Compile Include="Assets\Scripts\DesplazarRueda.cs" />
+    <Compile Include="Assets\Scripts\GameMenu.cs" />
+    <Compile Include="Assets\Scripts\GameMenuActivar.cs" />
+    <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\GameWin.cs" />
     <Compile Include="Assets\Scripts\GenerarMapa.cs" />
     <Compile Include="Assets\Scripts\LevantarTelon.cs" />
     <Compile Include="Assets\Scripts\MainMenu_MoverCamara.cs" />

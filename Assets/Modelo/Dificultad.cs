@@ -59,9 +59,9 @@ public class Dificultad : MonoBehaviour {
             {
                 listaDificultades = new List<Dificultad>
                     {
-                        new Dificultad("Facil", new Vector3(4f, 2f), new Vector3(6f, 0), 5, false),
+                        new Dificultad("Facil", new Vector3(4f, 2f), new Vector3(6f, 0), 3, false),
                         new Dificultad("Medio", new Vector3(4.5f, 2f), new Vector3(7f, 0), 3, true),
-                        new Dificultad("Dificil", new Vector3(5f, 2f), new Vector3(9f, 0), 1, true)
+                        new Dificultad("Dificil", new Vector3(5f, 2f), new Vector3(9f, 0), 2, true)
                     };
             }
             return listaDificultades;

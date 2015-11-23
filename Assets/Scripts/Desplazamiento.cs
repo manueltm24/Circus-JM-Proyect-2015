@@ -24,6 +24,8 @@ public class Desplazamiento : Personaje
 
     public static bool ResetRequestCompletado { get; set; }
 
+    public static bool Gano { get; set; }
+
     void Awake()
     {
         NivelActual = Application.loadedLevel;
@@ -33,7 +35,7 @@ public class Desplazamiento : Personaje
         PosicionInicialY = transform.localPosition.y;
         VelocidadInicialAnimacion = this.gameObject.GetComponent<Animator>().speed;
         CheckPoint = transform.localPosition;
-
+        Gano = false;
         if (!Application.loadedLevelName.Contains("Rueda") && Enterrado)
         {
             Enterrado = false;
@@ -42,21 +44,24 @@ public class Desplazamiento : Personaje
 
     void Update()
     {   
-        if (!Application.loadedLevelName.Contains("Cuerda"))
-            if (Application.loadedLevelName.Contains("Aro"))
-                DesplazarseX(LevantarTelon.DificultadActual.ModoAutomatico);
+        if(!Gano && Vidas > 0)
+        {
+            if (!Application.loadedLevelName.Contains("Cuerda"))
+                if (Application.loadedLevelName.Contains("Aro"))
+                    DesplazarseX(LevantarTelon.DificultadActual.ModoAutomatico);
+                else
+                    DesplazarseX();
             else
-                DesplazarseX();
-        else
-            MovimientoEnElAire();
+                MovimientoEnElAire();
 
 
-        EmpezarSalto();
-        Saltar();
-        CambioVelocidad();
+            EmpezarSalto();
+            Saltar();
+            CambioVelocidad();
 
-        if (Saltando)
-            this.gameObject.GetComponent<Animator>().speed = 0;
+            if (Saltando)
+                this.gameObject.GetComponent<Animator>().speed = 0;
+        }
     }
 
     void FixedUpdate()
@@ -96,6 +101,8 @@ public class Desplazamiento : Personaje
 
             if (Tiempo < CambiarTextoActuacion.TiempoRecord)
                 XML_GuardarNuevoTiempoRecord();
+
+            Gano = true;
         }
 
         if (colisionado.name.Contains("Cuerda") && SaltandoDeTrampolin)
