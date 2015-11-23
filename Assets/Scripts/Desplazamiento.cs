@@ -33,6 +33,11 @@ public class Desplazamiento : Personaje
         PosicionInicialY = transform.localPosition.y;
         VelocidadInicialAnimacion = this.gameObject.GetComponent<Animator>().speed;
         CheckPoint = transform.localPosition;
+
+        if (!Application.loadedLevelName.Contains("Rueda") && Enterrado)
+        {
+            Enterrado = false;
+        }
     }
 
     void Update()
@@ -73,7 +78,7 @@ public class Desplazamiento : Personaje
             this.gameObject.GetComponent<Animator>().speed = VelocidadInicialAnimacion;
         }
 
-        if (colisionado.name.Contains("Rueda") || colisionado.name == "PF_CuerdaBalanceo(Clone)" || colisionado.name.Contains("AroPasado"))
+        if (colisionado.name.Contains("Rueda") || colisionado.name == "PF_CuerdaBalanceo(Clone)" || colisionado.name.Contains("CheckPointAros"))
         {
             Puntuacion += 200;
             CheckPoint = transform.localPosition;
@@ -122,7 +127,7 @@ public class Desplazamiento : Personaje
         }
 
         //Maneja la perdida de vidas del personaje al colisionar con objetos asesinos
-        if (colisionado.name.Contains("Jarron") || colisionado.name.Contains("Aro"))
+        if (colisionado.name.Contains("Jarron") || colisionado.name.Contains("AroFuego") || colisionado.name.Contains("Palo"))
             Morir(Muerto1);
 
         //Maneja la perdida de vidas del personaje al caer al suelo
