@@ -75,6 +75,11 @@ public class Desplazamiento : Personaje
     /// <param name="colisionado">Objeto con el que se colisionó</param>
     public void OnTriggerEnter2D(Collider2D colisionado)
     {
+        /*if (colisionado.name.Contains("Aro") || colisionado.name.Contains("Final") || (colisionado.name.Contains("Suelo") && !Application.loadedLevelName.Contains("Aro")))
+        {
+            GameObject.Find(gameObject.name).GetComponent<AudioSource>().Play();
+        }ESTO DEBERIA IR EN EL START() DE MUERTO Y VICTORIA*/
+
         if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
         {
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;

@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\ContarPuntuacion.cs" />
     <Compile Include="Assets\Scripts\ContarTiempo.cs" />
     <Compile Include="Assets\Scripts\ContarVidas.cs" />
+    <Compile Include="Assets\Scripts\ControlMusica.cs" />
     <Compile Include="Assets\Scripts\Desplazamiento.cs" />
     <Compile Include="Assets\Scripts\DesplazarRueda.cs" />
     <Compile Include="Assets\Scripts\GameMenu.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\Scripts\MoverCamara.cs" />
     <Compile Include="Assets\Scripts\MoverFondo.cs" />
     <Compile Include="Assets\Scripts\SeleccionarDificultad.cs" />
+    <Compile Include="Assets\Scripts\Sonar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\mapa-aros-dificil.txt" />

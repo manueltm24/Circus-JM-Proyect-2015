@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 /// <summary>
 /// Clase que permite el movimiento de la camara para mostrar los distintos tipos de actuaciones.
 /// </summary>
@@ -22,10 +23,13 @@ public class MainMenu_MoverCamara : MonoBehaviour {
     /// <summary>
     /// Mueve la camara en forma de "loop infinito", cuando llega al final de un lado va al comienzo del otro
     /// </summary>
-    public void MoverCamara()
+    public void MoverCamara(float tecla = 0)
     {
+        EventSystem.current.SetSelectedGameObject(null, null);
         int ultimo = 3;
-        float tecla = Input.GetAxis("Horizontal");
+
+        if(tecla == 0)
+            tecla = Input.GetAxis("Horizontal");
 
         //Estandariza los valores de las teclas a 0 y 1, porqué originalmente esto es float, y no funciona bien con (int)
         if (tecla < 0)
