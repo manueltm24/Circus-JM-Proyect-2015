@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\MoverFondo.cs" />
     <Compile Include="Assets\Scripts\SeleccionarDificultad.cs" />
     <Compile Include="Assets\Scripts\Sonar.cs" />
+    <Compile Include="Assets\Scripts\SonidosColisionados.cs" />
     <None Include="Assets\mapa-cuerdas-facil.txt" />
     <None Include="Assets\mapa-aros-dificil.txt" />
     <None Include="Assets\mapa-cuerdas-medio.txt" />
@@ -85,17 +86,11 @@
     <None Include="Assets\mapa-trampolines-facil.txt" />
     <None Include="Assets\mapa-ruedas-dificil.txt" />
     <None Include="Assets\mapa-ruedas-facil.txt" />
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
