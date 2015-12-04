@@ -46,22 +46,40 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Modelo\Actuacion.cs" />
+     <Compile Include="Assets\Modelo\Dificultad.cs" />
      <Compile Include="Assets\Modelo\Personaje.cs" />
+     <Compile Include="Assets\Scripts\BalancearseCuerdas.cs" />
      <Compile Include="Assets\Scripts\CambiarTextoActuacion.cs" />
      <Compile Include="Assets\Scripts\CerrarCirco.cs" />
+     <Compile Include="Assets\Scripts\ColisionarRuedas.cs" />
+     <Compile Include="Assets\Scripts\ContarPuntuacion.cs" />
+     <Compile Include="Assets\Scripts\ContarTiempo.cs" />
      <Compile Include="Assets\Scripts\ContarVidas.cs" />
+     <Compile Include="Assets\Scripts\ControlMusica.cs" />
      <Compile Include="Assets\Scripts\Desplazamiento.cs" />
      <Compile Include="Assets\Scripts\DesplazarRueda.cs" />
+     <Compile Include="Assets\Scripts\GameMenu.cs" />
+     <Compile Include="Assets\Scripts\GameMenuActivar.cs" />
+     <Compile Include="Assets\Scripts\GameOver.cs" />
+     <Compile Include="Assets\Scripts\GameWin.cs" />
      <Compile Include="Assets\Scripts\GenerarMapa.cs" />
+     <Compile Include="Assets\Scripts\KonamiCode.cs" />
      <Compile Include="Assets\Scripts\LevantarTelon.cs" />
      <Compile Include="Assets\Scripts\MainMenu_MoverCamara.cs" />
      <Compile Include="Assets\Scripts\MoverCamara.cs" />
      <Compile Include="Assets\Scripts\MoverFondo.cs" />
-     <None Include="Assets\mapa-cuerda-balanceo.txt" />
-     <None Include="Assets\mapa-aros.txt" />
-     <None Include="Assets\mapa-ruedas.txt" />
-     <None Include="Assets\PruebaParaJeanLouis.txt" />
-     <None Include="Assets\blah.txt" />
+     <Compile Include="Assets\Scripts\SeleccionarDificultad.cs" />
+     <Compile Include="Assets\Scripts\Sonar.cs" />
+     <None Include="Assets\mapa-cuerdas-facil.txt" />
+     <None Include="Assets\mapa-aros-dificil.txt" />
+     <None Include="Assets\mapa-cuerdas-medio.txt" />
+     <None Include="Assets\mapa-aros-facil.txt" />
+     <None Include="Assets\mapa-aros-medio.txt" />
+     <None Include="Assets\mapa-cuerdas-dificil.txt" />
+     <None Include="Assets\mapa-ruedas-medio.txt" />
+     <None Include="Assets\mapa-trampolines-facil.txt" />
+     <None Include="Assets\mapa-ruedas-dificil.txt" />
+     <None Include="Assets\mapa-ruedas-facil.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
