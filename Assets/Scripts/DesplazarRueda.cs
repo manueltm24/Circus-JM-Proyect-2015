@@ -10,20 +10,52 @@ public class DesplazarRueda : Personaje
     public bool PersonajeEncima { get; set; }
     public bool MoverseAutomaticamente { get; set; }
     public TimeSpan TiempoMoverseAuto { get; set; }
-
-    void Awake ()
+    public bool Choco { get; set; }
+    public Vector3 UltimoCheckpointPersonaje { get; set; }
+    public Vector3 CheckPoint { get; set; }
+    public bool ResetRequestCompletado { get; set; }
+    void Awake()
     {
         Velocidad = new Vector3(0.2f, 0);
         DireccionActual = E_Direcciones.Oeste;
         TiempoUltimaActualizacion = DateTime.Now;
+        UltimoCheckpointPersonaje = Desplazamiento.CheckPoint;
+        CheckPoint = transform.localPosition;
     }
 
-	void Update ()
+    void Update()
     {
-        if(PersonajeEncima)
+        if (!Desplazamiento.ResetRequestCompletado)
+            ResetRequestCompletado = false;
+
+        if (Enterrado && !ResetRequestCompletado)
+        {
+            transform.localPosition = new Vector3(CheckPoint.x, CheckPoint.y, CheckPoint.z);
+            ResetRequestCompletado = true;
+        }
+
+        if (PersonajeEncima)
+        {
             DesplazarseX();
+            if (Enterrado)
+            {
+                Enterrado = false;
+            }
+        }
         else
             DesplazamientoRueda();
+
+        if (Choco && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.2))
+        {
+            Choco = false;
+            TiempoUltimaActualizacion = DateTime.Now;
+        }
+
+        if(UltimoCheckpointPersonaje != Desplazamiento.CheckPoint)
+        {
+            UltimoCheckpointPersonaje = Desplazamiento.CheckPoint;
+            CheckPoint = transform.localPosition;
+        }
     }
 
     /// <summary>
@@ -32,22 +64,10 @@ public class DesplazarRueda : Personaje
     /// <param name="colisionado">Objeto con el que se colisionó</param>
     public void OnTriggerEnter2D(Collider2D colisionado)
     {
-        if (colisionado.name.Contains("Personaje"))
+        if (colisionado.name.Contains("Personaje") && !Choco)
         {
-            Velocidad = new Vector3(4f, 0);
+            Velocidad = colisionado.GetComponent<Desplazamiento>().Velocidad;
             PersonajeEncima = true;
-        }
-
-        if (colisionado.name.Contains("Rueda") && colisionado != this.gameObject)
-        {
-            PersonajeEncima = false;
-            Velocidad = new Vector3(0.2f, 0);
-            TiempoUltimaActualizacion = DateTime.Now;
-
-            if (DireccionActual == E_Direcciones.Oeste)
-                DireccionActual = E_Direcciones.Este;
-            else
-                DireccionActual = E_Direcciones.Oeste;
         }
     }
 
