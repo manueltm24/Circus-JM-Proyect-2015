@@ -59,8 +59,12 @@ public class GenerarMapa : MonoBehaviour {
                 }
             }
 
-            Contador += (float)PFs[0].transform.localScale.y * 1 / -4.37f;
-
+            if (!Application.loadedLevelName.Contains("Trampolin"))
+            {
+                Contador += (float)PFs[0].transform.localScale.y * 1 / -4.37f;
+            }
+            else
+                Contador += (float)PFs[0].transform.localScale.y * 1 / -8.37f;
         }
 
         sr.Close();
@@ -73,9 +77,15 @@ public class GenerarMapa : MonoBehaviour {
     /// <param name="aInstanciar"></param>
     public void Instanciador(int i, Transform aInstanciar)
     {
-        if(Actuacion.ListaActuaciones[MainMenu_MoverCamara.Actual].Tipo == Actuacion.E_TipoActuacion.Techo)
-            Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 5.3f, aInstanciar.localPosition.z), transform.rotation);
-        else
-            Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
+        if (!Application.loadedLevelName.Contains("Trampolin")) {
+            if (Actuacion.ListaActuaciones[MainMenu_MoverCamara.Actual].Tipo == Actuacion.E_TipoActuacion.Techo)
+                Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 5.3f, aInstanciar.localPosition.z), transform.rotation);
+            else
+                Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
+        }
+        else if (Application.loadedLevelName.Contains("Trampolin"))
+        {
+            Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 10, aInstanciar.localPosition.z), transform.rotation);
+        }
     }
 }

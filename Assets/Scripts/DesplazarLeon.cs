@@ -89,6 +89,7 @@ public class DesplazarLeon : Personaje
             TiempoUltimaActualizacion = DateTime.Now;
             PersonajeEncima = false;
         }
+
     }
 
     /// <summary>

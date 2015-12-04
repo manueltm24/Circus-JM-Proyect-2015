@@ -21,6 +21,9 @@ public class Desplazamiento : Personaje
 
     public Vector3 PosicionGuardada { get; set; }
 
+    private float angulo;
+    private float velocidadrotacion = 3.0f;
+
     public static Vector3 CheckPoint { get; set; }
 
     public static bool ResetRequestCompletado { get; set; }
@@ -58,13 +61,14 @@ public class Desplazamiento : Personaje
             else
                 MovimientoEnElAire();
 
-
+            //Rotacion();
             EmpezarSalto();
             Saltar();
             CambioVelocidad();
 
             if (Saltando)
                 this.gameObject.GetComponent<Animator>().speed = 0;
+
         }
     }
 
@@ -86,8 +90,9 @@ public class Desplazamiento : Personaje
 
 
 
-        if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
+        if (colisionado.name.Contains("Leon") || colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
         {
+            this.gameObject.GetComponent<Animator>().speed = 0;
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
@@ -128,7 +133,7 @@ public class Desplazamiento : Personaje
             TraslacionX = 0;
         }
 
-        if (colisionado.name.Contains("Trampolin"))
+        if (colisionado.name.Contains("Trampolin") && DireccionActual==E_Direcciones.Este)
         {
       
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -136,6 +141,8 @@ public class Desplazamiento : Personaje
             Saltando = false;
             DireccionActual = E_Direcciones.Arriba;
             SaltandoDeTrampolin = true;
+
+            
             Saltar();
         }
 
@@ -200,6 +207,15 @@ public class Desplazamiento : Personaje
         {
             DataContractSerializer serializer = new DataContractSerializer(typeof(double));
             serializer.WriteObject(fileStream, Personaje.Tiempo);
+        }
+    }
+    private void Rotacion()
+    {
+        if (Application.loadedLevelName.Contains("Cuerdas") && Saltando)
+        {
+            angulo += 55 * Time.deltaTime * velocidadrotacion;
+            
+            transform.eulerAngles = new Vector3(0, 0, angulo);
         }
     }
 }
