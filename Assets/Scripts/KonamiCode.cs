@@ -9,6 +9,8 @@ using UnityEngine.UI;
 /// </summary>
 public class KonamiCode : MonoBehaviour
 {
+    public AudioSource Audio { get; set; }
+
     public Image imagenKC { get; set; }
 
     public int Code { get; set; }
@@ -37,7 +39,8 @@ public class KonamiCode : MonoBehaviour
             KeyCode.B,
             KeyCode.A
         };
-        
+
+        Audio = GameObject.Find(gameObject.name).GetComponent<AudioSource>();
     }
 	
 	void Update ()
@@ -48,6 +51,7 @@ public class KonamiCode : MonoBehaviour
         if (Posicion == KonamiC.Count && imagenKC.enabled == false)
         {
             imagenKC.enabled = true;
+            Audio.Play();
             return;
         }
 

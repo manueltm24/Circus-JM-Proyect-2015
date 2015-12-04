@@ -18,7 +18,7 @@ public class Sonar : MonoBehaviour {
 
     public void HacerSonido()
     {
-        if(Input.GetKey(Tecla))
+        if(Input.GetKeyDown(Tecla))
             Audio.Play();
     }
 }
