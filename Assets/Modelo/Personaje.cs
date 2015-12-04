@@ -25,6 +25,7 @@ public class Personaje : MonoBehaviour
     public E_Direcciones DireccionActual { get; set; }
 
     public Vector3 Velocidad { get; set; }
+    public Vector3 Rotacion { get; set; }
 
     public bool Saltando { get; set; }
 
@@ -96,6 +97,7 @@ public class Personaje : MonoBehaviour
             Saltando = true;
             DireccionActual = E_Direcciones.Reposo;
             TiempoUltimaActualizacion = DateTime.Now;
+
         }
     }
 
