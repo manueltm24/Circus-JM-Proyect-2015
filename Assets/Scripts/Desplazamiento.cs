@@ -12,6 +12,7 @@ using System.Runtime.Serialization;
 /// </summary>
 public class Desplazamiento : Personaje
 {
+    public Vector3 Altura { get; set; }
     public Transform Ganador;
     public Transform Muerto1;
     public int NivelActual;
@@ -43,8 +44,11 @@ public class Desplazamiento : Personaje
     }
 
     void Update()
-    {   
-        if(!Gano && Vidas > 0)
+    {
+        Altura = this.gameObject.transform.position;
+        if (Altura.y >= -1f)
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        if (!Gano && Vidas > 0)
         {
             if (!Application.loadedLevelName.Contains("Cuerda"))
                 if (Application.loadedLevelName.Contains("Aro"))
@@ -79,6 +83,8 @@ public class Desplazamiento : Personaje
         {
             GameObject.Find(gameObject.name).GetComponent<AudioSource>().Play();
         }ESTO DEBERIA IR EN EL START() DE MUERTO Y VICTORIA*/
+
+
 
         if (colisionado.name.Contains("Suelo") || colisionado.name.Contains("Rueda") || colisionado.name.Contains("Final"))
         {
@@ -124,6 +130,7 @@ public class Desplazamiento : Personaje
 
         if (colisionado.name.Contains("Trampolin"))
         {
+      
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
@@ -143,7 +150,7 @@ public class Desplazamiento : Personaje
             Morir(Muerto1);
 
         //Maneja la perdida de vidas del personaje al caer al suelo
-        if (colisionado.name.Contains("Suelo") && (Application.loadedLevelName.Contains("Cuerda") || Application.loadedLevelName.Contains("Rueda")))
+        if (colisionado.name.Contains("Suelo") && (Application.loadedLevelName.Contains("Cuerda")  || Application.loadedLevelName.Contains("Rueda") || Application.loadedLevelName.Contains("Trampolin")))
             Morir(Muerto1);
 
     }
