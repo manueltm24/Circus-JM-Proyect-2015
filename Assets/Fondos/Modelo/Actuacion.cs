@@ -69,7 +69,7 @@ public class Actuacion : MonoBehaviour {
                         new Actuacion("¡Las ruedas rodantes!", "punt-ruedas", "tiempo-ruedas", "mapa-ruedas", E_TipoActuacion.Suelo),
                         new Actuacion("¡El salto de cuerdas mortal!", "punt-cuerdas", "tiempo-cuerdas", "mapa-cuerdas", E_TipoActuacion.Techo),
                         new Actuacion("¡Salto de Trampolines", "punt-aros", "tiempo-aros", "mapa-trampolines", E_TipoActuacion.Suelo),
-                        new Actuacion("¡Cuerda Floja", "punt-aros", "tiempo-aros", "mapa-cuerdas", E_TipoActuacion.Techo),
+                        new Actuacion("¡Cuerda Floja", "punt-aros", "tiempo-aros", "mapa-floja", E_TipoActuacion.Suelo),
                     };
             }
             return listaActuaciones;

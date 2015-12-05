@@ -82,16 +82,23 @@
     <None Include="Assets\mapa-cuerdas-medio.txt" />
     <None Include="Assets\mapa-aros-facil.txt" />
     <None Include="Assets\mapa-aros-medio.txt" />
+    <None Include="Assets\mapa-floja-facil.txt" />
     <None Include="Assets\mapa-cuerdas-dificil.txt" />
     <None Include="Assets\mapa-ruedas-medio.txt" />
     <None Include="Assets\mapa-trampolines-facil.txt" />
     <None Include="Assets\mapa-ruedas-dificil.txt" />
     <None Include="Assets\mapa-ruedas-facil.txt" />
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

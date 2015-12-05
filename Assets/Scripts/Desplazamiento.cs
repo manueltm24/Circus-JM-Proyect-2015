@@ -30,9 +30,12 @@ public class Desplazamiento : Personaje
 
     public static bool Gano { get; set; }
 
+    public bool  Choco { get; set; }
+
     void Awake()
     {
         NivelActual = Application.loadedLevel;
+        Choco = false;
         Velocidad = new Vector3(4f, 2f);
         TiempoUltimaActualizacion = DateTime.Now;
         DireccionActual = E_Direcciones.Reposo;
@@ -49,7 +52,9 @@ public class Desplazamiento : Personaje
     void Update()
     {
         Altura = this.gameObject.transform.position;
-        if (Altura.y >= -1f)
+        if (Altura.y >= -1f && !Application.loadedLevelName.Contains("Lazo"))
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        if (Altura.y >= 2f && Application.loadedLevelName.Contains("Lazo") && Choco == false)
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
         if (!Gano && Vidas > 0)
         {
@@ -159,6 +164,12 @@ public class Desplazamiento : Personaje
         //Maneja la perdida de vidas del personaje al caer al suelo
         if (colisionado.name.Contains("Suelo") && (Application.loadedLevelName.Contains("Cuerda") || Application.loadedLevelName.Contains("Rueda") || Application.loadedLevelName.Contains("Trampolin")))
             Morir(Muerto1);
+        if (colisionado.name.Contains("Mono") && Application.loadedLevelName.Contains("Lazo"))
+        {
+            Morir(Muerto1);
+
+        }
+            
 
     }
 

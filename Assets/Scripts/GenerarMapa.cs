@@ -7,8 +7,9 @@ using System.Linq;
 /// <summary>
 /// Genera el mapa de la actuación a partir de un archivo de texto
 /// </summary>
-public class GenerarMapa : MonoBehaviour {
-    
+public class GenerarMapa : MonoBehaviour
+{
+
     public List<Transform> PFs;
 
     public float Contador { get; set; }
@@ -46,8 +47,8 @@ public class GenerarMapa : MonoBehaviour {
                         break;
 
                     case '*':
-						Instanciador(i, PFs[4]);
-						break;
+                        Instanciador(i, PFs[4]);
+                        break;
 
                     case 'P':
                         Instanciador(i, PFs.First(P => P.name.Contains("Personaje")));
@@ -65,11 +66,11 @@ public class GenerarMapa : MonoBehaviour {
             }
             else
             {
-                
+
                 Contador += (float)PFs[0].transform.localScale.y * 1 / -8.37f;
             }
 
-                
+
         }
 
         sr.Close();
@@ -82,15 +83,9 @@ public class GenerarMapa : MonoBehaviour {
     /// <param name="aInstanciar"></param>
     public void Instanciador(int i, Transform aInstanciar)
     {
-        if (!Application.loadedLevelName.Contains("Trampolin")) {
-            if (Actuacion.ListaActuaciones[MainMenu_MoverCamara.Actual].Tipo == Actuacion.E_TipoActuacion.Techo)
-                Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 5.3f, aInstanciar.localPosition.z), transform.rotation);
-            else
-                Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
-        }
-        else if (Application.loadedLevelName.Contains("Trampolin"))
+         if (Application.loadedLevelName.Contains("Trampolin"))
         {
-            if(aInstanciar!=PFs[2] && aInstanciar != PFs[1])
+            if (aInstanciar != PFs[2] && aInstanciar != PFs[1])
                 Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 10, aInstanciar.localPosition.z), transform.rotation);
             else if (aInstanciar == PFs[1])
             {
@@ -98,8 +93,28 @@ public class GenerarMapa : MonoBehaviour {
                     Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 10.28f, aInstanciar.localPosition.z), transform.rotation);
             }
             else
-                Instantiate(aInstanciar, new Vector3((float)((i / 2.4f) * aInstanciar.transform.localScale.x) - 6.8f, Contador +10.25f , aInstanciar.localPosition.z), transform.rotation);
+                Instantiate(aInstanciar, new Vector3((float)((i / 2.4f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 10.25f, aInstanciar.localPosition.z), transform.rotation);
 
+        }
+         else if( Application.loadedLevelName.Contains("Lazo"))
+        {
+            if (aInstanciar == PFs[0])
+                Instantiate(aInstanciar, new Vector3((float)((i / 5.6f) * aInstanciar.transform.localScale.x) - 63.8f, Contador + 10.85f, aInstanciar.localPosition.z), transform.rotation);
+            else if (aInstanciar == PFs[2])
+            {
+                    Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 11.28f, aInstanciar.localPosition.z), transform.rotation);
+            }
+            else
+                Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 11.5f, aInstanciar.localPosition.z), transform.rotation);
+
+        }
+
+        else
+        {
+            if (Actuacion.ListaActuaciones[MainMenu_MoverCamara.Actual].Tipo == Actuacion.E_TipoActuacion.Techo)
+                Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 5.3f, aInstanciar.localPosition.z), transform.rotation);
+            else
+                Instantiate(aInstanciar, new Vector3((float)((i / 3.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador, aInstanciar.localPosition.z), transform.rotation);
         }
     }
 }
