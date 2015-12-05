@@ -49,9 +49,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Modelo\Actuacion.cs" />
-    <Compile Include="Assets\Modelo\Dificultad.cs" />
-    <Compile Include="Assets\Modelo\Personaje.cs" />
+    <Compile Include="Assets\Fondos\Modelo\Actuacion.cs" />
+    <Compile Include="Assets\Fondos\Modelo\Dificultad.cs" />
+    <Compile Include="Assets\Fondos\Modelo\Personaje.cs" />
     <Compile Include="Assets\Scripts\BalancearseCuerdas.cs" />
     <Compile Include="Assets\Scripts\CambiarTextoActuacion.cs" />
     <Compile Include="Assets\Scripts\CerrarCirco.cs" />
@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\ContarTiempo.cs" />
     <Compile Include="Assets\Scripts\ContarVidas.cs" />
     <Compile Include="Assets\Scripts\ControlMusica.cs" />
+    <Compile Include="Assets\Scripts\DesplamientoMonos.cs" />
     <Compile Include="Assets\Scripts\Desplazamiento.cs" />
     <Compile Include="Assets\Scripts\DesplazarLeon.cs" />
     <Compile Include="Assets\Scripts\DesplazarRueda.cs" />
@@ -86,17 +87,11 @@
     <None Include="Assets\mapa-trampolines-facil.txt" />
     <None Include="Assets\mapa-ruedas-dificil.txt" />
     <None Include="Assets\mapa-ruedas-facil.txt" />
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>D:/Programas/Programacion/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>D:/Programas/Programacion/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

@@ -8,6 +8,7 @@ using System;
 public class MoverCamara : MonoBehaviour
 {
     public Transform Yo;
+    public Transform Yo2;
 
     void Update ()
     {
@@ -27,6 +28,12 @@ public class MoverCamara : MonoBehaviour
             Instantiate(Yo, Desplazamiento.CheckPoint, Yo.localRotation);
             Camera.main.transform.localPosition = new Vector3(Desplazamiento.CheckPoint.x + 4f, 0, -10);
             Desplazamiento.ResetRequestCompletado = true;
+
+            if (Application.loadedLevelName.Contains("Trampolin")){
+                Instantiate(Yo2, DesplazarLeon.CheckPoint, Yo2.localRotation);
+                Camera.main.transform.localPosition = new Vector3(Desplazamiento.CheckPoint.x + 4f, 0, -10);
+                Desplazamiento.ResetRequestCompletado = true;
+            }
         }
     }
 

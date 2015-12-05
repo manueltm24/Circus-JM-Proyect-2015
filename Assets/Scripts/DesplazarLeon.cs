@@ -8,14 +8,16 @@ using System.Threading;
 using System.Runtime.Serialization;
 
 public class DesplazarLeon : Personaje
-{
+{   
+    
 
     public bool PersonajeEncima { get; set; }
     public bool MoverseAutomaticamente { get; set; }
     public TimeSpan TiempoMoverseAuto { get; set; }
+
     public bool Choco { get; set; }
     public Vector3 UltimoCheckpointPersonaje { get; set; }
-    public Vector3 CheckPoint { get; set; }
+    public static Vector3 CheckPoint { get; set; }
     public bool ResetRequestCompletado { get; set; }
     void Awake()
     {
@@ -28,6 +30,8 @@ public class DesplazarLeon : Personaje
 
     void Update()
     {
+        if (Personaje.Muerto == true)
+            Destroy(this.gameObject);
 
         if (!Desplazamiento.ResetRequestCompletado)
             ResetRequestCompletado = false;

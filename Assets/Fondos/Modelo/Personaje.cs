@@ -82,7 +82,12 @@ public class Personaje : MonoBehaviour
     public void EmpezarSalto()
     {
         if ((Input.GetKey(KeyCode.Space) || Input.GetButton("Jump")) && !Saltando)
+        {
             DireccionActual = E_Direcciones.Arriba;
+            Debug.Log("SALTA");
+
+        }
+            
     }
 
     /// <summary>
@@ -92,6 +97,7 @@ public class Personaje : MonoBehaviour
     {
         if (DireccionActual == E_Direcciones.Arriba && DateTime.Now.Subtract(TiempoUltimaActualizacion) > TimeSpan.FromSeconds(0.04))
         {
+            Debug.Log("SALTA");
             this.gameObject.GetComponent<Rigidbody2D>().velocity += Vector2.up * 6.8f;
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
             Saltando = true;

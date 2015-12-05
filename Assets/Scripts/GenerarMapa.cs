@@ -64,7 +64,12 @@ public class GenerarMapa : MonoBehaviour {
                 Contador += (float)PFs[0].transform.localScale.y * 1 / -4.37f;
             }
             else
+            {
+                
                 Contador += (float)PFs[0].transform.localScale.y * 1 / -8.37f;
+            }
+
+                
         }
 
         sr.Close();
@@ -85,7 +90,16 @@ public class GenerarMapa : MonoBehaviour {
         }
         else if (Application.loadedLevelName.Contains("Trampolin"))
         {
-            Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 10, aInstanciar.localPosition.z), transform.rotation);
+            if(aInstanciar!=PFs[2] && aInstanciar != PFs[1])
+                Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 10, aInstanciar.localPosition.z), transform.rotation);
+            else if (aInstanciar == PFs[1])
+            {
+                if (aInstanciar == PFs[1])
+                    Instantiate(aInstanciar, new Vector3((float)((i / 2.6f) * aInstanciar.transform.localScale.x) - 6.8f, Contador + 10.28f, aInstanciar.localPosition.z), transform.rotation);
+            }
+            else
+                Instantiate(aInstanciar, new Vector3((float)((i / 2.4f) * aInstanciar.transform.localScale.x) - 6.8f, Contador +10.25f , aInstanciar.localPosition.z), transform.rotation);
+
         }
     }
 }

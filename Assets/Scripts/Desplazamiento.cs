@@ -104,7 +104,7 @@ public class Desplazamiento : Personaje
             Puntuacion += 200;
             CheckPoint = transform.localPosition;
         }
-        
+
         if (colisionado.name.Contains("Final"))
         {
             PosicionGuardada = transform.localPosition;
@@ -133,16 +133,16 @@ public class Desplazamiento : Personaje
             TraslacionX = 0;
         }
 
-        if (colisionado.name.Contains("Trampolin") && DireccionActual==E_Direcciones.Este)
+        if (colisionado.name.Contains("Trampolin") && DireccionActual == E_Direcciones.Este)
         {
-      
+
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TiempoUltimaActualizacion = DateTime.Now;
             Saltando = false;
             DireccionActual = E_Direcciones.Arriba;
             SaltandoDeTrampolin = true;
 
-            
+
             Saltar();
         }
 
@@ -157,7 +157,7 @@ public class Desplazamiento : Personaje
             Morir(Muerto1);
 
         //Maneja la perdida de vidas del personaje al caer al suelo
-        if (colisionado.name.Contains("Suelo") && (Application.loadedLevelName.Contains("Cuerda")  || Application.loadedLevelName.Contains("Rueda") || Application.loadedLevelName.Contains("Trampolin")))
+        if (colisionado.name.Contains("Suelo") && (Application.loadedLevelName.Contains("Cuerda") || Application.loadedLevelName.Contains("Rueda") || Application.loadedLevelName.Contains("Trampolin")))
             Morir(Muerto1);
 
     }
@@ -214,7 +214,7 @@ public class Desplazamiento : Personaje
         if (Application.loadedLevelName.Contains("Cuerdas") && Saltando)
         {
             angulo += 55 * Time.deltaTime * velocidadrotacion;
-            
+
             transform.eulerAngles = new Vector3(0, 0, angulo);
         }
     }

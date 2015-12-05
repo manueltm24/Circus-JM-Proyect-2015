@@ -26,7 +26,7 @@ public class MainMenu_MoverCamara : MonoBehaviour {
     public void MoverCamara(float tecla = 0)
     {
         EventSystem.current.SetSelectedGameObject(null, null);
-        int ultimo = 4;
+        int ultimo = 5;
 
         if(tecla == 0)
             tecla = Input.GetAxis("Horizontal");
